@@ -382,69 +382,36 @@
         let bubbleTimeLeft = 20;
         let bubbleScore = 0;
 
-        // --- WEB AUDIO API SOUND SYNTHESIZER ---
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        let audioCtx = null;
+        let indonesianVoice = null;
 
-        function initAudio() {
-            if (!audioCtx) {
-                audioCtx = new AudioCtx();
+        // Fungsi untuk mencari dan mengunci suara Bahasa Indonesia bawaan HP/Browser
+        function loadIndonesianVoice() {
+            if (!('speechSynthesis' in window)) return;
+            const voices = window.speechSynthesis.getVoices();
+            
+            // Prioritaskan mesin suara yang memiliki kode bahasa 'id' atau 'ind'
+            indonesianVoice = voices.find(v => {
+                const lang = (v.lang || '').toLowerCase().replace('_', '-');
+                return lang.startsWith('id') || lang.includes('ind');
+            }) || null;
+        }
+
+        if ('speechSynthesis' in window) {
+            loadIndonesianVoice();
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = loadIndonesianVoice;
             }
         }
 
-        function playSound(type) {
-            if (isAudioMuted) return;
-            initAudio();
-            if (!audioCtx) return;
-
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            const now = audioCtx.currentTime;
-
-            if (type === 'pop') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(400, now);
-                osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
-                gain.gain.setValueAtTime(0.3, now);
-                gain.gain.linearRampToValueAtTime(0, now + 0.08);
-                osc.start(now);
-                osc.stop(now + 0.08);
-            } else if (type === 'correct') {
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(523.25, now); // C5
-                osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
-                osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
-                gain.gain.setValueAtTime(0.3, now);
-                gain.gain.linearRampToValueAtTime(0, now + 0.35);
-                osc.start(now);
-                osc.stop(now + 0.35);
-            } else if (type === 'wrong') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(200, now);
-                osc.frequency.linearRampToValueAtTime(120, now + 0.25);
-                gain.gain.setValueAtTime(0.3, now);
-                gain.gain.linearRampToValueAtTime(0, now + 0.25);
-                osc.start(now);
-                osc.stop(now + 0.25);
-            } else if (type === 'victory') {
-                // Play simple victory chime
-                const notes = [523.25, 659.25, 783.99, 1046.50];
-                notes.forEach((freq, i) => {
-                    const oscV = audioCtx.createOscillator();
-                    const gainV = audioCtx.createGain();
-                    oscV.connect(gainV);
-                    gainV.connect(audioCtx.destination);
-                    oscV.type = 'sine';
-                    oscV.frequency.setValueAtTime(freq, now + i * 0.12);
-                    gainV.gain.setValueAtTime(0.2, now + i * 0.12);
-                    gainV.gain.linearRampToValueAtTime(0, now + i * 0.12 + 0.2);
-                    oscV.start(now + i * 0.12);
-                    oscV.stop(now + i * 0.12 + 0.2);
-                });
-            }
+        // Normalisasi teks agar simbol matematika selalu dilafalkan penuh dalam Bahasa Indonesia
+        function textToIndonesianWords(text) {
+            let str = String(text);
+            str = str.replace(/\+/g, ' ditambah ');
+            str = str.replace(/-/g, ' dikurangi ');
+            str = str.replace(/x/gi, ' dikali ');
+            str = str.replace(/=/g, ' sama dengan ');
+            str = str.replace(/\?/g, '');
+            return str;
         }
 
         // --- SPEECH SYNTHESIS (INDONESIAN TTS) ---
@@ -452,10 +419,22 @@
             if (isAudioMuted) return;
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
+                
+                const cleanText = textToIndonesianWords(text);
+                const utterance = new SpeechSynthesisUtterance(cleanText);
                 utterance.lang = 'id-ID';
-                utterance.rate = 0.85; // slightly slower for young kids
-                utterance.pitch = 1.1; // slightly higher friendly tone
+                
+                if (!indonesianVoice) {
+                    loadIndonesianVoice();
+                }
+                
+                // Kunci mesin suara ke Bahasa Indonesia
+                if (indonesianVoice) {
+                    utterance.voice = indonesianVoice;
+                }
+                
+                utterance.rate = 0.85; // Kecepatan agak lambat agar jelas untuk anak SD
+                utterance.pitch = 1.0;
                 window.speechSynthesis.speak(utterance);
             }
         }
@@ -906,6 +885,7 @@
         window.onload = function() {
             updateProfileUI();
             selectGrade(1);
+            loadIndonesianVoice();
         };
     </script>
 </body>
