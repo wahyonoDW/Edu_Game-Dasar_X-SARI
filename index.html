@@ -233,16 +233,23 @@
                             <span class="text-3xl">🎈</span>
                             <div>
                                 <h4 class="font-game text-base text-amber-900">GELEMBUNG</h4>
-                                <p class="text-[11px] text-amber-700">Tangkap Angka Melayang</p>
+                                <p class="text-[11px] text-amber-700">Tangkap Angka & Kata</p>
                             </div>
                         </div>
 
-                        <p class="text-xs text-amber-800 leading-relaxed font-semibold">
-                            Latih kecepatan refleksmu dengan menepuk gelembung target sebelum melayang hilang!
-                        </p>
+                        <div class="grid grid-cols-1 gap-2 mt-1">
+                            <button onclick="startBubbleGame('number')" class="bounce-hover bg-white hover:bg-amber-100 text-amber-900 p-2.5 rounded-xl border border-amber-300 font-bold text-xs flex items-center justify-between">
+                                <span>🔢 Gelembung Angka</span>
+                                <i class="fa-solid fa-chevron-right text-amber-400"></i>
+                            </button>
+                            <button onclick="startBubbleGame('syllable')" class="bounce-hover bg-white hover:bg-amber-100 text-amber-900 p-2.5 rounded-xl border border-amber-300 font-bold text-xs flex items-center justify-between">
+                                <span>🔤 Gelembung Suku Kata</span>
+                                <i class="fa-solid fa-chevron-right text-amber-400"></i>
+                            </button>
+                        </div>
 
-                        <button onclick="startBubbleGame()" class="bounce-hover bg-gradient-to-r from-amber-400 to-orange-500 text-white p-3 rounded-xl font-game text-sm text-center shadow border-b-4 border-orange-700 mt-auto">
-                            🎈 MAIN GELEMBUNG
+                        <button onclick="startBubbleGame('mix')" class="bounce-hover bg-gradient-to-r from-amber-400 to-orange-500 text-white p-2.5 rounded-xl font-game text-xs text-center shadow border-b-4 border-orange-700 mt-2">
+                            🎲 GELEMBUNG CAMPURAN
                         </button>
                     </div>
                 </div>
@@ -436,7 +443,7 @@
                 { word: 'BOLA', syllables: ['BO', 'LA'], emoji: '⚽' },
                 { word: 'ROTI', syllables: ['RO', 'TI'], emoji: '🍞' },
                 { word: 'SUSU', syllables: ['SU', 'SU'], emoji: '🥛' },
-                { word: 'KUTA', syllables: ['KU', 'TA'], emoji: '🐱' },
+                { word: 'KUCING', syllables: ['KU', 'CING'], emoji: '🐱' },
                 { word: 'MATA', syllables: ['MA', 'TA'], emoji: '👁️' },
                 { word: 'KAKI', syllables: ['KA', 'KI'], emoji: '🦶' },
                 { word: 'SAPI', syllables: ['SA', 'PI'], emoji: '🐄' },
@@ -482,6 +489,7 @@
         let selectedSyllables = [];
         let selectedSentenceWords = [];
         let bubbleTargetAnswer = null;
+        let bubbleTypeCurrent = 'number';
 
         // --- NAVIGASI LAYAR ---
         function showScreen(screenId) {
@@ -862,9 +870,10 @@
             }
         }
 
-        // --- GAME TANGKAP GELEMBUNG ---
-        function startBubbleGame() {
+        // --- GAME TANGKAP GELEMBUNG (ANGKA & SUKU KATA) ---
+        function startBubbleGame(subType = 'number') {
             currentMode = 'bubble';
+            currentSubMode = subType;
             currentGameIndex = 0;
             currentScore = 0;
             showScreen('screen-bubble-game');
@@ -881,46 +890,93 @@
             document.getElementById('bubble-progress-text').innerText = `Tantangan ${currentGameIndex} dari ${totalGameQuestions}`;
             document.getElementById('bubble-score-text').innerText = currentScore;
 
-            // Target Angka Acak
-            let maxVal = currentGrade === 1 ? 10 : (currentGrade === 2 ? 20 : 30);
-            bubbleTargetAnswer = Math.floor(Math.random() * maxVal) + 1;
+            // Tentukan apakah mode Angka, Suku Kata, atau Campuran
+            if (currentSubMode === 'number') {
+                bubbleTypeCurrent = 'number';
+            } else if (currentSubMode === 'syllable') {
+                bubbleTypeCurrent = 'syllable';
+            } else {
+                bubbleTypeCurrent = Math.random() > 0.5 ? 'number' : 'syllable';
+            }
 
-            document.getElementById('bubble-target-prompt').innerText = `Ketuk Gelembung Angka ${bubbleTargetAnswer}!`;
-
-            // Arena Gelembung
             const arena = document.getElementById('bubble-arena');
             arena.innerHTML = '';
 
-            // Generate 5 Gelembung (1 benar + 4 acak)
-            let values = [bubbleTargetAnswer];
-            while (values.length < 5) {
-                let dummy = Math.floor(Math.random() * maxVal) + 1;
-                if (!values.includes(dummy)) values.push(dummy);
-            }
-            values.sort(() => Math.random() - 0.5);
-
             const colors = ['bg-pink-400', 'bg-blue-400', 'bg-amber-400', 'bg-emerald-400', 'bg-purple-400'];
 
-            values.forEach((val, index) => {
-                const b = document.createElement('div');
-                const col = colors[index % colors.length];
-                b.className = `bubble-item w-16 h-16 ${col} rounded-full flex items-center justify-center font-game text-white text-xl shadow-lg border-2 border-white/60`;
-                
-                // Position X acak
-                const posX = 15 + (index * 17);
-                b.style.left = `${posX}%`;
-                b.style.animationDelay = `${(index * 0.4).toFixed(1)}s`;
-                b.innerText = val;
+            if (bubbleTypeCurrent === 'number') {
+                // MODUS ANGKA
+                let maxVal = currentGrade === 1 ? 10 : (currentGrade === 2 ? 20 : 30);
+                bubbleTargetAnswer = Math.floor(Math.random() * maxVal) + 1;
 
-                b.onclick = () => checkBubbleTap(val, b);
-                arena.appendChild(b);
-            });
+                document.getElementById('bubble-target-prompt').innerText = `Ketuk Gelembung Angka ${bubbleTargetAnswer}!`;
+
+                let values = [bubbleTargetAnswer];
+                while (values.length < 5) {
+                    let dummy = Math.floor(Math.random() * maxVal) + 1;
+                    if (!values.includes(dummy)) values.push(dummy);
+                }
+                values.sort(() => Math.random() - 0.5);
+
+                values.forEach((val, index) => {
+                    const b = document.createElement('div');
+                    const col = colors[index % colors.length];
+                    b.className = `bubble-item w-16 h-16 ${col} rounded-full flex items-center justify-center font-game text-white text-xl shadow-lg border-2 border-white/60`;
+                    
+                    const posX = 12 + (index * 18);
+                    b.style.left = `${posX}%`;
+                    b.style.animationDelay = `${(index * 0.4).toFixed(1)}s`;
+                    b.innerText = val;
+
+                    b.onclick = () => checkBubbleTap(val, b);
+                    arena.appendChild(b);
+                });
+
+            } else {
+                // MODUS SUKU KATA / MEMBACA
+                const db = wordDatabase[currentGrade] || wordDatabase[1];
+                const randomWordObj = db[Math.floor(Math.random() * db.length)];
+                bubbleTargetAnswer = randomWordObj.syllables[Math.floor(Math.random() * randomWordObj.syllables.length)];
+
+                document.getElementById('bubble-target-prompt').innerText = `Ketuk Suku Kata "${bubbleTargetAnswer}"! ${randomWordObj.emoji}`;
+
+                // Kumpulkan pilihan suku kata
+                let allSyllables = [];
+                Object.values(wordDatabase).flat().forEach(item => {
+                    allSyllables.push(...item.syllables);
+                });
+
+                let values = [bubbleTargetAnswer];
+                while (values.length < 5) {
+                    let dummy = allSyllables[Math.floor(Math.random() * allSyllables.length)];
+                    if (!values.includes(dummy)) values.push(dummy);
+                }
+                values.sort(() => Math.random() - 0.5);
+
+                values.forEach((val, index) => {
+                    const b = document.createElement('div');
+                    const col = colors[index % colors.length];
+                    b.className = `bubble-item w-16 h-16 ${col} rounded-full flex items-center justify-center font-game text-white text-lg shadow-lg border-2 border-white/60`;
+                    
+                    const posX = 12 + (index * 18);
+                    b.style.left = `${posX}%`;
+                    b.style.animationDelay = `${(index * 0.4).toFixed(1)}s`;
+                    b.innerText = val;
+
+                    b.onclick = () => checkBubbleTap(val, b);
+                    arena.appendChild(b);
+                });
+            }
 
             speakBubblePrompt();
         }
 
         function speakBubblePrompt() {
-            speakText(`Ketuk gelembung berangka ${bubbleTargetAnswer}`);
+            if (bubbleTypeCurrent === 'number') {
+                speakText(`Ketuk gelembung berangka ${bubbleTargetAnswer}`);
+            } else {
+                speakText(`Ketuk gelembung suku kata ${bubbleTargetAnswer}`);
+            }
         }
 
         function checkBubbleTap(val, element) {
@@ -937,7 +993,7 @@
                 setTimeout(loadNextBubbleQuestion, 1200);
             } else {
                 playSound('wrong');
-                speakText(`Bukan yang itu, cari angka ${bubbleTargetAnswer}!`);
+                speakText(`Bukan yang itu, cari ${bubbleTargetAnswer}!`);
             }
         }
 
@@ -957,7 +1013,7 @@
             if (currentMode === 'math') startMathGame(currentSubMode);
             else if (currentMode === 'word') startReadingWords();
             else if (currentMode === 'sentence') startReadingSentences();
-            else if (currentMode === 'bubble') startBubbleGame();
+            else if (currentMode === 'bubble') startBubbleGame(currentSubMode);
             else goToMainMenu();
         }
 
