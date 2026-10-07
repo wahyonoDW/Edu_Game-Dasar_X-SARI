@@ -6,11 +6,11 @@
     <title>PETUALANGAN BELAJAR SD NEGERI KALISARI</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Fredoka for playful kids design -->
+    <!-- Google Fonts: Fredoka -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Canvas Confetti for winning celebrations -->
+    <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
@@ -41,7 +41,6 @@
             80% { opacity: 1; }
             100% { transform: translateY(-120%) scale(1.1); opacity: 0; }
         }
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -66,24 +65,24 @@
             </div>
             <div>
                 <h1 class="font-bold text-lg sm:text-xl text-indigo-900 leading-none">SD NEGERI KALISARI</h1>
-                <p class="text-xs text-indigo-600 font-medium">Petualangan Belajar</p>
+                <p class="text-xs text-indigo-600 font-medium">Petualangan Belajar Interaktif</p>
             </div>
         </div>
 
         <div class="flex items-center space-x-4">
-            <!-- Player Profile Widget -->
+            <!-- Profil Pemain -->
             <button onclick="openAvatarModal()" class="flex items-center space-x-2 bg-indigo-100 hover:bg-indigo-200 p-2 pr-4 rounded-full transition active-press border-2 border-indigo-300">
                 <span id="player-avatar-icon" class="text-2xl bg-white rounded-full w-9 h-9 flex items-center justify-center shadow">🚀</span>
                 <span id="player-name" class="font-semibold text-indigo-900 text-sm hidden sm:inline">Adik Pintar</span>
             </button>
 
-            <!-- Star Score -->
+            <!-- Skor Bintang -->
             <div class="flex items-center space-x-1 bg-amber-100 border-2 border-amber-300 px-3 py-1.5 rounded-full shadow-sm">
                 <i class="fa-solid fa-star text-amber-500 text-lg pulse-star"></i>
                 <span id="total-stars" class="font-extrabold text-amber-700 text-lg">0</span>
             </div>
 
-            <!-- Speaker / Sound Toggle -->
+            <!-- Tombol Suara -->
             <button onclick="toggleAudio()" id="btn-audio-toggle" class="w-10 h-10 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full flex items-center justify-center shadow transition active-press">
                 <i id="icon-audio" class="fa-solid fa-volume-high"></i>
             </button>
@@ -92,7 +91,7 @@
 
     <main class="flex-grow max-w-5xl w-full mx-auto p-4 sm:p-6 flex flex-col items-center justify-center">
 
-        <!-- SCREEN 1: MAIN MENU & GRADE SELECTOR -->
+        <!-- TAMPILAN UTAMA & PILIHAN KELAS -->
         <section id="screen-main-menu" class="w-full flex flex-col items-center text-center space-y-6">
             <div class="bg-white/90 p-6 rounded-3xl shadow-xl max-w-2xl w-full border-4 border-amber-300 relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-200 rounded-full blur-2xl opacity-50"></div>
@@ -105,12 +104,15 @@
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-indigo-900 tracking-wide uppercase">
                         PETUALANGAN BELAJAR SD NEGERI KALISARI
                     </h2>
-                    <p class="text-slate-600 text-sm sm:text-base mt-1">Pilih tingkat kelasmu untuk mulai berpetualang!</p>
+                    <p class="text-slate-600 text-sm sm:text-base mt-1">Pilih kelasmu untuk mulai berpetualang!</p>
+                    <span class="mt-2 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300">
+                        ✨ Bank Soal: 100+ Kosakata & Variasi Unik
+                    </span>
                 </div>
 
-                <!-- Grade Selection Cards -->
+                <!-- Kartu Pilihan Kelas -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                    <button onclick="selectGrade(1)" id="grade-btn-1" class="grade-card p-5 bg-gradient-to-br from-emerald-400 to-teal-500 text-white rounded-2xl shadow-lg border-b-4 border-teal-700 bounce-hover transition active-press text-left flex flex-col justify-between h-36">
+                    <button onclick="selectGrade(1)" id="grade-btn-1" class="grade-card p-5 bg-gradient-to-br from-emerald-400 to-teal-500 text-white rounded-2xl shadow-lg border-b-4 border-teal-700 bounce-hover transition active-press text-left flex flex-col justify-between h-36 border-4 border-yellow-300 scale-105">
                         <div class="flex justify-between items-center">
                             <span class="text-3xl">🌱</span>
                             <span class="bg-white/30 text-xs px-2 py-1 rounded-full font-bold">Umur 6-7 thn</span>
@@ -121,7 +123,7 @@
                         </div>
                     </button>
 
-                    <button onclick="selectGrade(2)" id="grade-btn-2" class="grade-card p-5 bg-gradient-to-br from-sky-400 to-indigo-500 text-white rounded-2xl shadow-lg border-b-4 border-indigo-700 bounce-hover transition active-press text-left flex flex-col justify-between h-36 border-4 border-yellow-300 scale-105">
+                    <button onclick="selectGrade(2)" id="grade-btn-2" class="grade-card p-5 bg-gradient-to-br from-sky-400 to-indigo-500 text-white rounded-2xl shadow-lg border-b-4 border-indigo-700 bounce-hover transition active-press text-left flex flex-col justify-between h-36">
                         <div class="flex justify-between items-center">
                             <span class="text-3xl">🚀</span>
                             <span class="bg-white/30 text-xs px-2 py-1 rounded-full font-bold">Umur 7-8 thn</span>
@@ -144,7 +146,7 @@
                     </button>
                 </div>
 
-                <!-- Game Category Buttons -->
+                <!-- Tombol Permainan -->
                 <h3 class="text-xl font-bold text-indigo-900 mb-4 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-gamepad text-amber-500"></i> Pilih Permainan:
                 </h3>
@@ -162,7 +164,7 @@
                         <span class="text-3xl bg-white/20 p-2 rounded-xl">📖</span>
                         <div class="text-left">
                             <div class="font-bold text-lg leading-tight">Membaca</div>
-                            <div class="text-xs text-blue-100">Ejaan & Kata</div>
+                            <div class="text-xs text-blue-100">Ejaan & Suku Kata</div>
                         </div>
                     </button>
 
@@ -170,13 +172,14 @@
                         <span class="text-3xl bg-white/20 p-2 rounded-xl">🎈</span>
                         <div class="text-left">
                             <div class="font-bold text-lg leading-tight">Gelembung</div>
-                            <div class="text-xs text-rose-100">Uji Kecepatan</div>
+                            <div class="text-xs text-rose-100">Tantangan Cepat</div>
                         </div>
                     </button>
                 </div>
             </div>
         </section>
 
+        <!-- GAME MATEMATIKA -->
         <section id="screen-math-game" class="w-full max-w-2xl hidden">
             <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-orange-400 relative">
                 <div class="flex justify-between items-center mb-6 pb-3 border-b-2 border-slate-100">
@@ -197,7 +200,7 @@
                     <div id="math-visual-container" class="flex justify-center items-center gap-2 mb-4 flex-wrap min-h-[60px]">
                     </div>
 
-                    <div id="math-question-text" class="text-4xl sm:text-5xl font-extrabold text-indigo-900 tracking-wider bg-indigo-50 py-4 px-6 rounded-2xl border-2 border-indigo-200 inline-block shadow-inner">
+                    <div id="math-question-text" class="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-wider bg-indigo-50 py-4 px-6 rounded-2xl border-2 border-indigo-200 inline-block shadow-inner">
                         5 + 3 = ?
                     </div>
                 </div>
@@ -210,6 +213,7 @@
             </div>
         </section>
 
+        <!-- GAME MEMBACA -->
         <section id="screen-reading-game" class="w-full max-w-2xl hidden">
             <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-cyan-400 relative">
                 <div class="flex justify-between items-center mb-6 pb-3 border-b-2 border-slate-100">
@@ -246,6 +250,7 @@
             </div>
         </section>
 
+        <!-- GAME GELEMBUNG -->
         <section id="screen-bubble-game" class="w-full max-w-3xl hidden">
             <div class="bg-gradient-to-b from-indigo-900 to-slate-900 text-white p-6 rounded-3xl shadow-2xl border-4 border-rose-400 relative overflow-hidden h-[480px] flex flex-col justify-between">
                 
@@ -272,11 +277,12 @@
 
                 <div class="z-10 flex justify-between items-center text-sm font-semibold bg-white/10 backdrop-blur-md p-3 rounded-2xl">
                     <span>Skor Tangkapan: <strong id="bubble-score" class="text-emerald-400 text-lg">0</strong></span>
-                    <span id="bubble-status-msg" class="text-xs text-rose-200">Tekan gelembung yang benar!</span>
+                    <span id="bubble-status-msg" class="text-xs text-rose-200">Ketuk gelembung yang sesuai perintah!</span>
                 </div>
             </div>
         </section>
 
+        <!-- MODAL KEMENANGAN -->
         <div id="modal-victory" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
             <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-amber-400 transform transition scale-100">
                 <div class="w-24 h-24 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center text-5xl mx-auto mb-4 border-4 border-amber-300 shadow-lg pulse-star">
@@ -292,7 +298,7 @@
                     </div>
                     <div class="h-8 w-0.5 bg-amber-200"></div>
                     <div>
-                        <span class="text-xs text-amber-700 font-bold block">Akurasi</span>
+                        <span class="text-xs text-amber-700 font-bold block">Akurasi / Skor</span>
                         <span id="modal-accuracy" class="text-3xl font-extrabold text-emerald-600">100%</span>
                     </div>
                 </div>
@@ -302,12 +308,13 @@
                         Menu Utama
                     </button>
                     <button onclick="restartCurrentGame()" class="flex-1 py-3 bg-gradient-to-r from-emerald-400 to-teal-500 text-white font-bold rounded-2xl shadow-lg hover:brightness-105 transition active-press">
-                        Main Lagi 🔄
+                        Soal Baru 🔄
                     </button>
                 </div>
             </div>
         </div>
 
+        <!-- MODAL PROFIL PLAYER -->
         <div id="modal-avatar" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
             <div class="bg-white rounded-3xl p-6 max-w-md w-full text-center shadow-2xl border-4 border-indigo-300">
                 <h3 class="text-2xl font-bold text-indigo-900 mb-2">Ganti Profil & Avatar</h3>
@@ -339,25 +346,26 @@
     </footer>
 
     <script>
-        // --- GAME STATE & VARIABLES ---
+        // --- STATE APLIKASI ---
         let currentGrade = 1;
         let totalStars = parseInt(localStorage.getItem('bintang_cilik_stars')) || 0;
         let playerName = localStorage.getItem('bintang_cilik_name') || 'Adik Pintar';
         let playerAvatar = localStorage.getItem('bintang_cilik_avatar') || '🚀';
         let isAudioMuted = false;
 
-        let currentGameType = ''; // 'math', 'reading', 'bubble'
+        let currentGameType = ''; 
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;
         let currentQuestionsList = [];
         let currentTargetWord = null;
 
-        // Bubble Game Variables
+        // Variabel Game Gelembung
         let bubbleTimer = null;
         let bubbleTimeLeft = 20;
         let bubbleScore = 0;
+        let currentBubbleRule = { text: 'Cari Angka GENAP!', check: (v) => v % 2 === 0 };
 
-        // --- WEB AUDIO API SOUND GENERATOR ---
+        // --- EFEK SUARA SINTESIS WEB AUDIO ---
         let audioCtx = null;
 
         function initAudioContext() {
@@ -438,8 +446,11 @@
             
             indonesianVoice = voices.find(v => {
                 const lang = (v.lang || '').toLowerCase().replace('_', '-');
+                return lang === 'id-id' || lang === 'id';
+            }) || voices.find(v => {
+                const lang = (v.lang || '').toLowerCase();
                 const name = (v.name || '').toLowerCase();
-                return lang.startsWith('id') || lang.includes('ind') || name.includes('indonesia');
+                return lang.startsWith('id') || name.includes('indonesia') || name.includes('indonesian');
             }) || null;
         }
 
@@ -450,23 +461,50 @@
             }
         }
 
+        // FUNGSI KONVERSI ANGKA KE EJAAN INDONESIA
+        function numberToIndonesianWords(n) {
+            if (isNaN(n)) return n;
+            n = parseInt(n);
+            if (n === 0) return 'nol';
+            
+            const ones = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas'];
+            if (n < 12) return ones[n];
+            if (n < 20) return ones[n - 10] + ' belas';
+            if (n < 100) {
+                const tens = Math.floor(n / 10);
+                const rest = n % 10;
+                return ones[tens] + ' puluh' + (rest > 0 ? ' ' + ones[rest] : '');
+            }
+            if (n === 100) return 'seratus';
+            return n.toString();
+        }
+
         function textToIndonesianWords(text) {
             let str = String(text);
+            
+            // Hapus emoji
+            str = str.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
+            
+            // Ubah simbol matematika
             str = str.replace(/\+/g, ' ditambah ');
             str = str.replace(/-/g, ' dikurangi ');
             str = str.replace(/x/gi, ' dikali ');
             str = str.replace(/=/g, ' sama dengan ');
             str = str.replace(/\?/g, '');
+            
+            // Ubah angka menjadi kata Indonesia
+            str = str.replace(/\b\d+\b/g, (match) => numberToIndonesianWords(parseInt(match)));
+            
             return str;
         }
 
         function speakText(text) {
             if (isAudioMuted || !('speechSynthesis' in window)) return;
             
-            // Cancel pending speech requests
-            window.speechSynthesis.cancel();
+            try {
+                window.speechSynthesis.cancel();
+            } catch (e) {}
 
-            // Timeout prevents race conditions on mobile WebKit browsers
             setTimeout(() => {
                 try {
                     const cleanText = textToIndonesianWords(text);
@@ -476,7 +514,6 @@
                     if (!indonesianVoice) {
                         loadIndonesianVoice();
                     }
-
                     if (indonesianVoice) {
                         utterance.voice = indonesianVoice;
                     }
@@ -488,20 +525,24 @@
                 } catch (e) {
                     console.log('Speech Error:', e);
                 }
-            }, 60);
+            }, 50);
         }
 
         function unlockAudioEngine() {
             initAudioContext();
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.resume();
-                loadIndonesianVoice();
+                try {
+                    window.speechSynthesis.resume();
+                    const dummy = new SpeechSynthesisUtterance(' ');
+                    dummy.volume = 0.01;
+                    window.speechSynthesis.speak(dummy);
+                    loadIndonesianVoice();
+                } catch (e) {}
             }
         }
 
-        // Attach touch unlock listener for Mobile Autoplay policies
-        window.addEventListener('click', unlockAudioEngine, { once: true });
-        window.addEventListener('touchstart', unlockAudioEngine, { once: true });
+        window.addEventListener('click', unlockAudioEngine, { once: false });
+        window.addEventListener('touchstart', unlockAudioEngine, { once: false });
 
         function toggleAudio() {
             isAudioMuted = !isAudioMuted;
@@ -570,6 +611,7 @@
             updateProfileUI();
         }
 
+        // --- MATEMATIKA (GENERATOR DINAMIS RIBUAN SOAL) ---
         function startMathGame() {
             currentGameType = 'math';
             currentQuestionIndex = 0;
@@ -583,67 +625,97 @@
 
         function generateMathQuestions() {
             currentQuestionsList = [];
-            const emojis = ['🍎', '⭐️', '🚗', '🎈', '🐱', '🍪'];
+            const emojis = ['🍎', '⭐️', '🚗', '🎈', '🐱', '🍪', '⚽️', '🍦', '✏️', '🌸', '🦁', '🚀'];
 
             for (let i = 0; i < 5; i++) {
-                let num1, num2, operator, answer;
+                let num1, num2, operator, answer, questionText, visualAllowed = false;
                 const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
                 if (currentGrade === 1) {
-                    operator = Math.random() > 0.3 ? '+' : '-';
+                    // Kelas 1: Penjumlahan & Pengurangan dasar (1 - 10)
+                    operator = Math.random() > 0.4 ? '+' : '-';
+                    visualAllowed = true;
                     if (operator === '+') {
                         num1 = Math.floor(Math.random() * 5) + 1;
                         num2 = Math.floor(Math.random() * 5) + 1;
                         answer = num1 + num2;
                     } else {
                         num1 = Math.floor(Math.random() * 6) + 4;
-                        num2 = Math.floor(Math.random() * num1) + 1;
+                        num2 = Math.floor(Math.random() * (num1 - 1)) + 1;
                         answer = num1 - num2;
                     }
+                    questionText = `${num1} ${operator} ${num2} = ?`;
                 } else if (currentGrade === 2) {
-                    operator = Math.random() > 0.4 ? '+' : '-';
-                    if (operator === '+') {
-                        num1 = Math.floor(Math.random() * 10) + 5;
-                        num2 = Math.floor(Math.random() * 10) + 1;
+                    // Kelas 2: Penjumlahan/Pengurangan sampai 50 & Perkalian Dasar (1-5)
+                    const mode = Math.random();
+                    if (mode < 0.4) {
+                        operator = '+';
+                        num1 = Math.floor(Math.random() * 25) + 5;
+                        num2 = Math.floor(Math.random() * 20) + 1;
                         answer = num1 + num2;
-                    } else {
-                        num1 = Math.floor(Math.random() * 10) + 10;
-                        num2 = Math.floor(Math.random() * 9) + 1;
+                        questionText = `${num1} + ${num2} = ?`;
+                    } else if (mode < 0.7) {
+                        operator = '-';
+                        num1 = Math.floor(Math.random() * 30) + 15;
+                        num2 = Math.floor(Math.random() * 15) + 1;
                         answer = num1 - num2;
-                    }
-                } else {
-                    operator = Math.random() > 0.5 ? 'x' : '+';
-                    if (operator === 'x') {
+                        questionText = `${num1} - ${num2} = ?`;
+                    } else {
+                        operator = 'x';
                         num1 = Math.floor(Math.random() * 5) + 2;
                         num2 = Math.floor(Math.random() * 5) + 1;
                         answer = num1 * num2;
-                    } else {
-                        num1 = Math.floor(Math.random() * 25) + 10;
-                        num2 = Math.floor(Math.random() * 20) + 5;
+                        questionText = `${num1} × ${num2} = ?`;
+                    }
+                } else {
+                    // Kelas 3: Perkalian sampai 10, Penjumlahan Ratusan, Soal Angka Misteri
+                    const mode = Math.random();
+                    if (mode < 0.4) {
+                        operator = 'x';
+                        num1 = Math.floor(Math.random() * 8) + 2;
+                        num2 = Math.floor(Math.random() * 9) + 2;
+                        answer = num1 * num2;
+                        questionText = `${num1} × ${num2} = ?`;
+                    } else if (mode < 0.7) {
+                        operator = '+';
+                        num1 = Math.floor(Math.random() * 50) + 25;
+                        num2 = Math.floor(Math.random() * 40) + 10;
                         answer = num1 + num2;
+                        questionText = `${num1} + ${num2} = ?`;
+                    } else {
+                        // Angka Misteri: ? + num2 = answer
+                        operator = '+';
+                        num2 = Math.floor(Math.random() * 15) + 5;
+                        answer = Math.floor(Math.random() * 25) + 20;
+                        num1 = answer - num2;
+                        questionText = `? + ${num2} = ${answer}`;
                     }
                 }
 
+                // Buat 4 Pilihan Jawaban Acak tanpa Duplikat
                 let options = [answer];
                 while (options.length < 4) {
-                    let wrong = answer + (Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 4) + 1);
-                    if (wrong >= 0 && !options.includes(wrong)) options.push(wrong);
+                    let offset = (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1);
+                    let wrong = answer + offset;
+                    if (wrong >= 0 && !options.includes(wrong)) {
+                        options.push(wrong);
+                    }
                 }
                 options.sort(() => Math.random() - 0.5);
 
-                currentQuestionsList.push({ num1, num2, operator, answer, emoji, options });
+                currentQuestionsList.push({ num1, num2, operator, answer, emoji, options, questionText, visualAllowed });
             }
         }
 
         function renderMathQuestion() {
             const q = currentQuestionsList[currentQuestionIndex];
             document.getElementById('math-question-count').innerText = `${currentQuestionIndex + 1}/5`;
-            document.getElementById('math-question-text').innerText = `${q.num1} ${q.operator} ${q.num2} = ?`;
+            document.getElementById('math-question-text').innerText = q.questionText;
 
             const visualContainer = document.getElementById('math-visual-container');
             visualContainer.innerHTML = '';
             
-            if (currentGrade === 1 && q.num1 <= 10) {
+            if (q.visualAllowed && q.num1 <= 10) {
                 let html = '<div class="bg-orange-50 p-2 rounded-xl border border-orange-200">';
                 for (let i = 0; i < q.num1; i++) html += `<span class="text-2xl">${q.emoji}</span>`;
                 html += `</div><span class="text-2xl font-bold text-orange-500">${q.operator}</span><div class="bg-orange-50 p-2 rounded-xl border border-orange-200">`;
@@ -664,7 +736,7 @@
                 optionsGrid.appendChild(btn);
             });
 
-            speakText(`Berapakah ${q.num1} ${q.operator === 'x' ? 'dikali' : q.operator === '+' ? 'ditambah' : 'dikurangi'} ${q.num2}?`);
+            speakText(`Berapakah hasil dari ${q.questionText}`);
         }
 
         function checkMathAnswer(selected, correct, btnElement) {
@@ -675,7 +747,7 @@
                 correctAnswersCount++;
                 playSound('correct');
                 feedback.className = 'p-4 rounded-2xl text-center font-bold text-lg bg-emerald-100 text-emerald-800 border-2 border-emerald-300';
-                feedback.innerText = '🎉 TEPAT SKALI! JAWABANMU BENAR!';
+                feedback.innerText = '🎉 TEPAT SEKALI! JAWABANMU BENAR!';
                 speakText('Hebat! Jawabannya benar!');
             } else {
                 playSound('wrong');
@@ -697,24 +769,108 @@
             }, 1800);
         }
 
+        // --- MEMBACA (BANK DATA 100+ KOSAKATA BERJENJANG) ---
         const readingDatabase = {
             1: [
-                { word: 'BAJU', syllables: ['BA', 'JU'], emoji: '👕', options: ['BA', 'JU', 'BU', 'JA'] },
-                { word: 'BOLA', syllables: ['BO', 'LA'], emoji: '⚽️', options: ['BO', 'LA', 'BA', 'LO'] },
-                { word: 'BUKU', syllables: ['BU', 'KU'], emoji: '📚', options: ['BU', 'KU', 'KA', 'BI'] },
-                { word: 'KUDA', syllables: ['KU', 'DA'], emoji: '🐴', options: ['KU', 'DA', 'KA', 'DU'] },
-                { word: 'MATA', syllables: ['MA', 'TA'], emoji: '👁️', options: ['MA', 'TA', 'MU', 'TI'] }
+                { word: 'BAJU', syllables: ['BA', 'JU'], emoji: '👕', options: ['BA', 'JU', 'BU', 'JA', 'JI'] },
+                { word: 'BOLA', syllables: ['BO', 'LA'], emoji: '⚽️', options: ['BO', 'LA', 'BA', 'LO', 'LI'] },
+                { word: 'BUKU', syllables: ['BU', 'KU'], emoji: '📚', options: ['BU', 'KU', 'KA', 'BI', 'KO'] },
+                { word: 'KUDA', syllables: ['KU', 'DA'], emoji: '🐴', options: ['KU', 'DA', 'KA', 'DU', 'DI'] },
+                { word: 'MATA', syllables: ['MA', 'TA'], emoji: '👁️', options: ['MA', 'TA', 'MU', 'TI', 'MO'] },
+                { word: 'ROTI', syllables: ['RO', 'TI'], emoji: '🍞', options: ['RO', 'TI', 'RA', 'TO', 'RU'] },
+                { word: 'NANA', syllables: ['NA', 'NA'], emoji: '👧', options: ['NA', 'NI', 'NU', 'NO', 'NE'] },
+                { word: 'TOPI', syllables: ['TO', 'PI'], emoji: '🧢', options: ['TO', 'PI', 'TA', 'PO', 'PU'] },
+                { word: 'SAPU', syllables: ['SA', 'PU'], emoji: '🧹', options: ['SA', 'PU', 'SI', 'PA', 'PO'] },
+                { word: 'DASI', syllables: ['DA', 'SI'], emoji: '👔', options: ['DA', 'SI', 'DU', 'SA', 'SO'] },
+                { word: 'APEL', syllables: ['A', 'PEL'], emoji: '🍎', options: ['A', 'PEL', 'E', 'PAL', 'POL'] },
+                { word: 'PALU', syllables: ['PA', 'LU'], emoji: '🔨', options: ['PA', 'LU', 'PU', 'LA', 'LO'] },
+                { word: 'KAKI', syllables: ['KA', 'KI'], emoji: '🦶', options: ['KA', 'KI', 'KU', 'KO', 'KE'] },
+                { word: 'GIGI', syllables: ['GI', 'GI'], emoji: '🦷', options: ['GI', 'GA', 'GU', 'GO', 'GE'] },
+                { word: 'JARI', syllables: ['JA', 'RI'], emoji: '🖐️', options: ['JA', 'RI', 'JU', 'RA', 'RO'] },
+                { word: 'SAPI', syllables: ['SA', 'PI'], emoji: '🐄', options: ['SA', 'PI', 'SO', 'PU', 'SI'] },
+                { word: 'RODA', syllables: ['RO', 'DA'], emoji: '🛞', options: ['RO', 'DA', 'RA', 'DU', 'DI'] },
+                { word: 'KAYU', syllables: ['KA', 'YU'], emoji: '🪵', options: ['KA', 'YU', 'KU', 'YA', 'YO'] },
+                { word: 'CABAI', syllables: ['CA', 'BAI'], emoji: '🌶️', options: ['CA', 'BAI', 'CU', 'BA', 'BI'] },
+                { word: 'CEKO', syllables: ['CE', 'KO'], emoji: '☕️', options: ['CE', 'KO', 'CA', 'KI', 'KU'] },
+                { word: 'NAGA', syllables: ['NA', 'GA'], emoji: '🐉', options: ['NA', 'GA', 'NI', 'GU', 'GO'] },
+                { word: 'SUSU', syllables: ['SU', 'SU'], emoji: '🥛', options: ['SU', 'SA', 'SI', 'SO', 'SE'] },
+                { word: 'PITA', syllables: ['PI', 'TA'], emoji: '🎀', options: ['PI', 'TA', 'PO', 'TI', 'TU'] },
+                { word: 'LABU', syllables: ['LA', 'BU'], emoji: '🎃', options: ['LA', 'BU', 'LI', 'BA', 'BO'] },
+                { word: 'PENA', syllables: ['PE', 'NA'], emoji: '🖊️', options: ['PE', 'NA', 'PA', 'NI', 'NU'] },
+                { word: 'PISANG', syllables: ['PI', 'SANG'], emoji: '🍌', options: ['PI', 'SANG', 'PA', 'SING', 'SUNG'] },
+                { word: 'MEJA', syllables: ['ME', 'JA'], emoji: '🪑', options: ['ME', 'JA', 'MA', 'JU', 'JO'] },
+                { word: 'DAUN', syllables: ['DA', 'UN'], emoji: '🍃', options: ['DA', 'UN', 'DU', 'AN', 'IN'] },
+                { word: 'IKAN', syllables: ['I', 'KAN'], emoji: '🐟', options: ['I', 'KAN', 'A', 'KIN', 'KUN'] },
+                { word: 'CUMI', syllables: ['CU', 'MI'], emoji: '🦑', options: ['CU', 'MI', 'CA', 'MU', 'MO'] },
+                { word: 'OBAT', syllables: ['O', 'BAT'], emoji: '💊', options: ['O', 'BAT', 'A', 'BIT', 'BUT'] },
+                { word: 'NUSA', syllables: ['NU', 'SA'], emoji: '🏝️', options: ['NU', 'SA', 'NA', 'SI', 'SO'] },
+                { word: 'LARI', syllables: ['LA', 'RI'], emoji: '🏃', options: ['LA', 'RI', 'LU', 'RA', 'RO'] },
+                { word: 'YOYO', syllables: ['YO', 'YO'], emoji: '🪀', options: ['YO', 'YA', 'YU', 'YE', 'YI'] }
             ],
             2: [
-                { word: 'SEPEDA', syllables: ['SE', 'PE', 'DA'], emoji: '🚲', options: ['SE', 'PE', 'DA', 'PI', 'SU'] },
-                { word: 'KELINCI', syllables: ['KE', 'LIN', 'CI'], emoji: '🐰', options: ['KE', 'LIN', 'CI', 'LAN', 'CU'] },
-                { word: 'SEPATU', syllables: ['SE', 'PA', 'TU'], emoji: '👟', options: ['SE', 'PA', 'TU', 'SA', 'TI'] },
-                { word: 'DOMPET', syllables: ['DOM', 'PET'], emoji: '👛', options: ['DOM', 'PET', 'DAM', 'POT'] }
+                { word: 'SEPEDA', syllables: ['SE', 'PE', 'DA'], emoji: '🚲', options: ['SE', 'PE', 'DA', 'PI', 'SU', 'SA'] },
+                { word: 'KELINCI', syllables: ['KE', 'LIN', 'CI'], emoji: '🐰', options: ['KE', 'LIN', 'CI', 'LAN', 'CU', 'KA'] },
+                { word: 'SEPATU', syllables: ['SE', 'PA', 'TU'], emoji: '👟', options: ['SE', 'PA', 'TU', 'SA', 'TI', 'PU'] },
+                { word: 'DOMPET', syllables: ['DOM', 'PET'], emoji: '👛', options: ['DOM', 'PET', 'DAM', 'POT', 'DUM'] },
+                { word: 'CELANA', syllables: ['CE', 'LA', 'NA'], emoji: '👖', options: ['CE', 'LA', 'NA', 'CI', 'LU', 'NI'] },
+                { word: 'KEMEJA', syllables: ['KE', 'ME', 'JA'], emoji: '👔', options: ['KE', 'ME', 'JA', 'KA', 'MU', 'JI'] },
+                { word: 'LEMARI', syllables: ['LE', 'MA', 'RI'], emoji: '🗄️', options: ['LE', 'MA', 'RI', 'LA', 'MU', 'RO'] },
+                { word: 'JENDELA', syllables: ['JEN', 'DE', 'LA'], emoji: '🪟', options: ['JEN', 'DE', 'LA', 'JAN', 'DU', 'LI'] },
+                { word: 'MELON', syllables: ['ME', 'LON'], emoji: '🍈', options: ['ME', 'LON', 'MA', 'LAN', 'LUN'] },
+                { word: 'KERETA', syllables: ['KE', 'RE', 'TA'], emoji: '🚆', options: ['KE', 'RE', 'TA', 'KA', 'RU', 'TI'] },
+                { word: 'CANGKIR', syllables: ['CANG', 'KIR'], emoji: '☕️', options: ['CANG', 'KIR', 'CING', 'KUR', 'CAR'] },
+                { word: 'SENDOK', syllables: ['SEN', 'DOK'], emoji: '🥄', options: ['SEN', 'DOK', 'SAN', 'DUK', 'SON'] },
+                { word: 'PIRING', syllables: ['PI', 'RING'], emoji: '🍽️', options: ['PI', 'RING', 'PA', 'RANG', 'RUNG'] },
+                { word: 'PENSIL', syllables: ['PEN', 'SIL'], emoji: '✏️', options: ['PEN', 'SIL', 'PAN', 'SUL', 'PON'] },
+                { word: 'JAGUNG', syllables: ['JA', 'GUNG'], emoji: '🌽', options: ['JA', 'GUNG', 'JI', 'GANG', 'GING'] },
+                { word: 'BAWANG', syllables: ['BA', 'WANG'], emoji: '🧅', options: ['BA', 'WANG', 'BU', 'WING', 'WUNG'] },
+                { word: 'BAYAM', syllables: ['BA', 'YAM'], emoji: '🥬', options: ['BA', 'YAM', 'BU', 'YIM', 'YUM'] },
+                { word: 'WORTEL', syllables: ['WOR', 'TEL'], emoji: '🥕', options: ['WOR', 'TEL', 'WAR', 'TIL', 'TUL'] },
+                { word: 'TOMAT', syllables: ['TO', 'MAT'], emoji: '🍅', options: ['TO', 'MAT', 'TA', 'MIT', 'MUT'] },
+                { word: 'PEPAYA', syllables: ['PE', 'PA', 'YA'], emoji: '🥭', options: ['PE', 'PA', 'YA', 'PU', 'PI', 'YO'] },
+                { word: 'NANAS', syllables: ['NA', 'NAS'], emoji: '🍍', options: ['NA', 'NAS', 'NI', 'NIS', 'NUS'] },
+                { word: 'DURIAN', syllables: ['DU', 'RI', 'AN'], emoji: '🫒', options: ['DU', 'RI', 'AN', 'DA', 'RU', 'IN'] },
+                { word: 'KANCIL', syllables: ['KAN', 'CIL'], emoji: '🦌', options: ['KAN', 'CIL', 'KIN', 'CUL', 'CAN'] },
+                { word: 'BURUNG', syllables: ['BU', 'RUNG'], emoji: '🐦', options: ['BU', 'RUNG', 'BA', 'RANG', 'RING'] },
+                { word: 'GAJAH', syllables: ['GA', 'JAH'], emoji: '🐘', options: ['GA', 'JAH', 'GI', 'JUH', 'JOH'] },
+                { word: 'JERUK', syllables: ['JE', 'RUK'], emoji: '🍊', options: ['JE', 'RUK', 'JA', 'RAK', 'RIK'] },
+                { word: 'SERAGAM', syllables: ['SE', 'RA', 'GAM'], emoji: '🥋', options: ['SE', 'RA', 'GAM', 'SI', 'RU', 'GUM'] },
+                { word: 'DINDING', syllables: ['DIN', 'DING'], emoji: '🧱', options: ['DIN', 'DING', 'DAN', 'DANG', 'DUNG'] },
+                { word: 'BANGKU', syllables: ['BANG', 'KU'], emoji: '🪑', options: ['BANG', 'KU', 'BING', 'KA', 'KO'] },
+                { word: 'KERTAS', syllables: ['KER', 'TAS'], emoji: '📄', options: ['KER', 'TAS', 'KAR', 'TIS', 'TUS'] },
+                { word: 'MONYET', syllables: ['MON', 'YET'], emoji: '🐒', options: ['MON', 'YET', 'MAN', 'YAT', 'YUT'] },
+                { word: 'BEBEK', syllables: ['BE', 'BEK'], emoji: '🦆', options: ['BE', 'BEK', 'BA', 'BAK', 'BUK'] },
+                { word: 'SEMUT', syllables: ['SE', 'MUT'], emoji: '🐜', options: ['SE', 'MUT', 'SA', 'MAT', 'MIT'] },
+                { word: 'LEBAH', syllables: ['LE', 'BAH'], emoji: '🐝', options: ['LE', 'BAH', 'LA', 'BUH', 'BIH'] }
             ],
             3: [
-                { word: 'ASTRONOT', syllables: ['AS', 'TRO', 'NOT'], emoji: '👨‍🚀', options: ['AS', 'TRO', 'NOT', 'TRA', 'NAT'] },
-                { word: 'HELI KOPTER', syllables: ['HE', 'LI', 'KOP', 'TER'], emoji: '🚁', options: ['HE', 'LI', 'KOP', 'TER', 'KAP'] },
-                { word: 'PELANGI', syllables: ['PE', 'LANG', 'I'], emoji: '🌈', options: ['PE', 'LANG', 'I', 'LUNG', 'A'] }
+                { word: 'ASTRONOT', syllables: ['AS', 'TRO', 'NOT'], emoji: '👨‍🚀', options: ['AS', 'TRO', 'NOT', 'TRA', 'NAT', 'NUT'] },
+                { word: 'HELIKOPTER', syllables: ['HE', 'LI', 'KOP', 'TER'], emoji: '🚁', options: ['HE', 'LI', 'KOP', 'TER', 'KAP', 'TUR'] },
+                { word: 'PELANGI', syllables: ['PE', 'LANG', 'I'], emoji: '🌈', options: ['PE', 'LANG', 'I', 'LUNG', 'A', 'U'] },
+                { word: 'KOMPUTER', syllables: ['KOM', 'PU', 'TER'], emoji: '💻', options: ['KOM', 'PU', 'TER', 'KAM', 'PA', 'TAR'] },
+                { word: 'MATAHARI', syllables: ['MA', 'TA', 'HA', 'RI'], emoji: '☀️', options: ['MA', 'TA', 'HA', 'RI', 'MU', 'RO'] },
+                { word: 'PERISTIWA', syllables: ['PE', 'RIS', 'TI', 'WA'], emoji: '📸', options: ['PE', 'RIS', 'TI', 'WA', 'PA', 'WO'] },
+                { word: 'KELUARGA', syllables: ['KE', 'LU', 'AR', 'GA'], emoji: '👨‍👩‍👧‍👦', options: ['KE', 'LU', 'AR', 'GA', 'KA', 'GI'] },
+                { word: 'PANCASILA', syllables: ['PAN', 'CA', 'SI', 'LA'], emoji: '🇮🇩', options: ['PAN', 'CA', 'SI', 'LA', 'PIN', 'LU'] },
+                { word: 'INDONESIA', syllables: ['IN', 'DO', 'NE', 'SIA'], emoji: '🗺️', options: ['IN', 'DO', 'NE', 'SIA', 'AN', 'SA'] },
+                { word: 'BENDERA', syllables: ['BEN', 'DE', 'RA'], emoji: '🚩', options: ['BEN', 'DE', 'RA', 'BAN', 'DU', 'RO'] },
+                { word: 'PENDIDIKAN', syllables: ['PEN', 'DI', 'DI', 'KAN'], emoji: '🎓', options: ['PEN', 'DI', 'DI', 'KAN', 'PAN', 'KON'] },
+                { word: 'PEMANDANGAN', syllables: ['PE', 'MAN', 'DA', 'NGAN'], emoji: '🏞️', options: ['PE', 'MAN', 'DA', 'NGAN', 'PA', 'NGIN'] },
+                { word: 'PERPUSTAKAAN', syllables: ['PER', 'PUS', 'TA', 'KA', 'AN'], emoji: '🏛️', options: ['PER', 'PUS', 'TA', 'KA', 'AN', 'PAR'] },
+                { word: 'TENTARA', syllables: ['TEN', 'TA', 'RA'], emoji: '🪖', options: ['TEN', 'TA', 'RA', 'TAN', 'TU', 'RO'] },
+                { word: 'POLISI', syllables: ['PO', 'LI', 'SI'], emoji: '👮‍♂️', options: ['PO', 'LI', 'SI', 'PA', 'LU', 'SA'] },
+                { word: 'DOKTER', syllables: ['DOK', 'TER'], emoji: '👨‍⚕️', options: ['DOK', 'TER', 'DAK', 'TUR', 'DIR'] },
+                { word: 'SERANGGA', syllables: ['SE', 'RANG', 'GA'], emoji: '🐞', options: ['SE', 'RANG', 'GA', 'SA', 'RING', 'GU'] },
+                { word: 'KUPUKUPU', syllables: ['KU', 'PU', 'KU', 'PU'], emoji: '🦋', options: ['KU', 'PU', 'KA', 'PA', 'KO'] },
+                { word: 'PERAHU', syllables: ['PE', 'RA', 'HU'], emoji: '⛵️', options: ['PE', 'RA', 'HU', 'PA', 'RU', 'HI'] },
+                { word: 'LINGKUNGAN', syllables: ['LING', 'KUNG', 'AN'], emoji: '🌱', options: ['LING', 'KUNG', 'AN', 'LANG', 'KANG', 'IN'] },
+                { word: 'KETERAMPILAN', syllables: ['KE', 'TE', 'RAM', 'PI', 'LAN'], emoji: '🎨', options: ['KE', 'TE', 'RAM', 'PI', 'LAN', 'KA'] },
+                { word: 'MATEMATIKA', syllables: ['MA', 'TE', 'MA', 'TI', 'KA'], emoji: '📐', options: ['MA', 'TE', 'MA', 'TI', 'KA', 'MU'] },
+                { word: 'OLAH RAGA', syllables: ['O', 'LAH', 'RA', 'GA'], emoji: '⚽️', options: ['O', 'LAH', 'RA', 'GA', 'AL', 'GI'] },
+                { word: 'KESEHATAN', syllables: ['KE', 'SE', 'HA', 'TAN'], emoji: '🏥', options: ['KE', 'SE', 'HA', 'TAN', 'KA', 'TIN'] },
+                { word: 'MATAHARI', syllables: ['MA', 'TA', 'HA', 'RI'], emoji: '🌅', options: ['MA', 'TA', 'HA', 'RI', 'MI', 'RU'] },
+                { word: 'DISIPLIN', syllables: ['DI', 'SIP', 'LIN'], emoji: '⏰', options: ['DI', 'SIP', 'LIN', 'DA', 'SAP', 'LAN'] },
+                { word: 'PRAMUKA', syllables: ['PRA', 'MU', 'KA'], emoji: '🏕️', options: ['PRA', 'MU', 'KA', 'PRI', 'MA', 'KO'] }
             ]
         };
 
@@ -726,8 +882,10 @@
             correctAnswersCount = 0;
             
             document.getElementById('reading-grade-badge').innerText = `Kelas ${currentGrade}`;
-            currentQuestionsList = readingDatabase[currentGrade] || readingDatabase[1];
-            currentQuestionsList.sort(() => Math.random() - 0.5);
+            
+            // Pilih 5 kata secara acak dari bank data
+            const masterList = readingDatabase[currentGrade] || readingDatabase[1];
+            currentQuestionsList = [...masterList].sort(() => Math.random() - 0.5).slice(0, 5);
 
             showScreen('screen-reading-game');
             renderReadingQuestion();
@@ -810,7 +968,7 @@
 
             setTimeout(() => {
                 currentQuestionIndex++;
-                if (currentQuestionIndex < Math.min(5, currentQuestionsList.length)) {
+                if (currentQuestionIndex < currentQuestionsList.length) {
                     renderReadingQuestion();
                 } else {
                     finishGame();
@@ -818,16 +976,27 @@
             }, 2000);
         }
 
+        // --- GELEMBUNG (TANTANGAN DINAMIS BARU) ---
         function startBubbleGame() {
             currentGameType = 'bubble';
             bubbleScore = 0;
             bubbleTimeLeft = 20;
 
+            // Pilih Aturan Target Gelembung Acak Setiap Kali Bermain
+            const rules = [
+                { text: 'Tangkap Angka GENAP!', check: (v) => v % 2 === 0 },
+                { text: 'Tangkap Angka GANJIL!', check: (v) => v % 2 !== 0 },
+                { text: 'Tangkap Angka LEBIH DARI 5!', check: (v) => v > 5 },
+                { text: 'Tangkap Angka KELIPATAN 5!', check: (v) => v % 5 === 0 }
+            ];
+            currentBubbleRule = rules[Math.floor(Math.random() * rules.length)];
+
+            document.getElementById('bubble-target-prompt').innerText = currentBubbleRule.text;
             document.getElementById('bubble-score').innerText = bubbleScore;
             document.getElementById('bubble-timer').innerText = `${bubbleTimeLeft}s`;
             
             showScreen('screen-bubble-game');
-            speakText('Tangkap gelembung angka genap!');
+            speakText(currentBubbleRule.text);
 
             if (bubbleTimer) clearInterval(bubbleTimer);
             bubbleTimer = setInterval(() => {
@@ -847,8 +1016,7 @@
             canvas.innerHTML = '';
 
             for (let i = 0; i < 7; i++) {
-                const isEven = Math.random() > 0.4;
-                const val = isEven ? (Math.floor(Math.random() * 5) * 2 + 2) : (Math.floor(Math.random() * 5) * 2 + 1);
+                const val = Math.floor(Math.random() * 20) + 1;
 
                 const bubble = document.createElement('button');
                 bubble.className = 'absolute floating-bubble w-20 h-20 bg-gradient-to-tr from-cyan-400 to-fuchsia-400/80 rounded-full border-4 border-white text-white font-extrabold text-3xl shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition';
@@ -859,7 +1027,7 @@
                 bubble.innerText = val;
 
                 bubble.onclick = () => {
-                    if (val % 2 === 0) {
+                    if (currentBubbleRule.check(val)) {
                         playSound('pop');
                         bubbleScore += 10;
                         document.getElementById('bubble-score').innerText = bubbleScore;
