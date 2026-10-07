@@ -56,7 +56,6 @@
 </head>
 <body class="bg-gradient-to-b from-sky-400 via-indigo-200 to-purple-300 min-h-screen flex flex-col justify-between text-slate-800">
 
-    <!-- Top Bar Navigation -->
     <header class="p-4 bg-white/80 backdrop-blur-md shadow-md rounded-b-3xl sticky top-0 z-40 max-w-5xl mx-auto w-full flex justify-between items-center px-6">
         <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('screen-main-menu')">
             <div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center overflow-hidden shadow-lg bounce-hover border-2 border-amber-300">
@@ -91,7 +90,6 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <main class="flex-grow max-w-5xl w-full mx-auto p-4 sm:p-6 flex flex-col items-center justify-center">
 
         <!-- SCREEN 1: MAIN MENU & GRADE SELECTOR -->
@@ -179,10 +177,8 @@
             </div>
         </section>
 
-        <!-- SCREEN 2: MATH GAME SCREEN -->
         <section id="screen-math-game" class="w-full max-w-2xl hidden">
             <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-orange-400 relative">
-                <!-- Header Status -->
                 <div class="flex justify-between items-center mb-6 pb-3 border-b-2 border-slate-100">
                     <button onclick="showScreen('screen-main-menu')" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-sm flex items-center space-x-2">
                         <i class="fa-solid fa-arrow-left"></i> <span>Kembali</span>
@@ -197,10 +193,8 @@
                     </div>
                 </div>
 
-                <!-- Math Question Area -->
                 <div class="text-center my-6">
                     <div id="math-visual-container" class="flex justify-center items-center gap-2 mb-4 flex-wrap min-h-[60px]">
-                        <!-- Visual objects (e.g. apples, stars) injected via JS -->
                     </div>
 
                     <div id="math-question-text" class="text-4xl sm:text-5xl font-extrabold text-indigo-900 tracking-wider bg-indigo-50 py-4 px-6 rounded-2xl border-2 border-indigo-200 inline-block shadow-inner">
@@ -208,21 +202,16 @@
                     </div>
                 </div>
 
-                <!-- Options Grid -->
                 <div id="math-options-grid" class="grid grid-cols-2 gap-4 my-6">
-                    <!-- Option buttons generated via JS -->
                 </div>
 
-                <!-- Feedback Banner -->
                 <div id="math-feedback" class="hidden p-4 rounded-2xl text-center font-bold text-lg transition duration-300">
                 </div>
             </div>
         </section>
 
-        <!-- SCREEN 3: READING & SYLLABLE GAME SCREEN -->
         <section id="screen-reading-game" class="w-full max-w-2xl hidden">
             <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-cyan-400 relative">
-                <!-- Header Status -->
                 <div class="flex justify-between items-center mb-6 pb-3 border-b-2 border-slate-100">
                     <button onclick="showScreen('screen-main-menu')" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-sm flex items-center space-x-2">
                         <i class="fa-solid fa-arrow-left"></i> <span>Kembali</span>
@@ -236,7 +225,6 @@
                     </button>
                 </div>
 
-                <!-- Reading Visual & Question Area -->
                 <div class="text-center my-4">
                     <div id="reading-image-emoji" class="text-7xl my-2 animate-bounce">
                         👕
@@ -246,28 +234,21 @@
                         Susun Suku Kata yang Benar:
                     </p>
 
-                    <!-- Target Word Display -->
                     <div id="reading-word-display" class="flex justify-center items-center gap-2 my-4">
-                        <!-- Syllables or Letter Slots -->
                     </div>
                 </div>
 
-                <!-- Syllable/Letter Choices Grid -->
                 <div id="reading-choices-grid" class="flex flex-wrap justify-center gap-3 my-6">
-                    <!-- Syllable buttons generated via JS -->
                 </div>
 
-                <!-- Feedback Banner -->
                 <div id="reading-feedback" class="hidden p-4 rounded-2xl text-center font-bold text-lg transition">
                 </div>
             </div>
         </section>
 
-        <!-- SCREEN 4: SPEED BUBBLE POP GAME -->
         <section id="screen-bubble-game" class="w-full max-w-3xl hidden">
             <div class="bg-gradient-to-b from-indigo-900 to-slate-900 text-white p-6 rounded-3xl shadow-2xl border-4 border-rose-400 relative overflow-hidden h-[480px] flex flex-col justify-between">
                 
-                <!-- Game Header Bar -->
                 <div class="flex justify-between items-center z-10 bg-white/10 backdrop-blur-md p-3 rounded-2xl">
                     <button onclick="exitBubbleGame()" class="px-3 py-1.5 bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl text-sm transition">
                         <i class="fa-solid fa-arrow-left"></i> Keluar
@@ -286,12 +267,9 @@
                     </div>
                 </div>
 
-                <!-- Floating Bubbles Area -->
                 <div id="bubble-canvas" class="relative w-full h-full my-2 overflow-hidden">
-                    <!-- Bubbles floating dynamically created in JS -->
                 </div>
 
-                <!-- Bottom Status -->
                 <div class="z-10 flex justify-between items-center text-sm font-semibold bg-white/10 backdrop-blur-md p-3 rounded-2xl">
                     <span>Skor Tangkapan: <strong id="bubble-score" class="text-emerald-400 text-lg">0</strong></span>
                     <span id="bubble-status-msg" class="text-xs text-rose-200">Tekan gelembung yang benar!</span>
@@ -299,7 +277,6 @@
             </div>
         </section>
 
-        <!-- VICTORY MODAL -->
         <div id="modal-victory" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
             <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-amber-400 transform transition scale-100">
                 <div class="w-24 h-24 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center text-5xl mx-auto mb-4 border-4 border-amber-300 shadow-lg pulse-star">
@@ -331,7 +308,6 @@
             </div>
         </div>
 
-        <!-- PLAYER AVATAR MODAL -->
         <div id="modal-avatar" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
             <div class="bg-white rounded-3xl p-6 max-w-md w-full text-center shadow-2xl border-4 border-indigo-300">
                 <h3 class="text-2xl font-bold text-indigo-900 mb-2">Ganti Profil & Avatar</h3>
@@ -358,7 +334,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="p-4 text-center text-xs text-indigo-900/70 font-semibold">
         SD NEGERI KALISARI &bull; Media Pembelajaran Interaktif Matematika & Membaca
     </footer>
@@ -382,17 +357,89 @@
         let bubbleTimeLeft = 20;
         let bubbleScore = 0;
 
+        // --- WEB AUDIO API SOUND GENERATOR ---
+        let audioCtx = null;
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playSound(type) {
+            if (isAudioMuted) return;
+            initAudioContext();
+            if (!audioCtx) return;
+
+            try {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'pop') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, now);
+                    osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+                    osc.start(now);
+                    osc.stop(now + 0.08);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.1);
+                    osc.frequency.setValueAtTime(783.99, now + 0.2);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                    osc.start(now);
+                    osc.stop(now + 0.4);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.setValueAtTime(180, now + 0.15);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'victory') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const noteOsc = audioCtx.createOscillator();
+                        const noteGain = audioCtx.createGain();
+                        noteOsc.connect(noteGain);
+                        noteGain.connect(audioCtx.destination);
+                        noteOsc.type = 'sine';
+                        noteOsc.frequency.setValueAtTime(freq, now + idx * 0.12);
+                        noteGain.gain.setValueAtTime(0.2, now + idx * 0.12);
+                        noteGain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.12 + 0.25);
+                        noteOsc.start(now + idx * 0.12);
+                        noteOsc.stop(now + idx * 0.12 + 0.25);
+                    });
+                }
+            } catch (e) {
+                console.log('Audio Error:', e);
+            }
+        }
+
         let indonesianVoice = null;
 
-        // Fungsi untuk mencari dan mengunci suara Bahasa Indonesia bawaan HP/Browser
         function loadIndonesianVoice() {
             if (!('speechSynthesis' in window)) return;
             const voices = window.speechSynthesis.getVoices();
+            if (!voices || voices.length === 0) return;
             
-            // Prioritaskan mesin suara yang memiliki kode bahasa 'id' atau 'ind'
             indonesianVoice = voices.find(v => {
                 const lang = (v.lang || '').toLowerCase().replace('_', '-');
-                return lang.startsWith('id') || lang.includes('ind');
+                const name = (v.name || '').toLowerCase();
+                return lang.startsWith('id') || lang.includes('ind') || name.includes('indonesia');
             }) || null;
         }
 
@@ -403,7 +450,6 @@
             }
         }
 
-        // Normalisasi teks agar simbol matematika selalu dilafalkan penuh dalam Bahasa Indonesia
         function textToIndonesianWords(text) {
             let str = String(text);
             str = str.replace(/\+/g, ' ditambah ');
@@ -414,44 +460,61 @@
             return str;
         }
 
-        // --- SPEECH SYNTHESIS (INDONESIAN TTS) ---
         function speakText(text) {
-            if (isAudioMuted) return;
+            if (isAudioMuted || !('speechSynthesis' in window)) return;
+            
+            // Cancel pending speech requests
+            window.speechSynthesis.cancel();
+
+            // Timeout prevents race conditions on mobile WebKit browsers
+            setTimeout(() => {
+                try {
+                    const cleanText = textToIndonesianWords(text);
+                    const utterance = new SpeechSynthesisUtterance(cleanText);
+                    utterance.lang = 'id-ID';
+
+                    if (!indonesianVoice) {
+                        loadIndonesianVoice();
+                    }
+
+                    if (indonesianVoice) {
+                        utterance.voice = indonesianVoice;
+                    }
+
+                    utterance.rate = 0.85;
+                    utterance.pitch = 1.0;
+
+                    window.speechSynthesis.speak(utterance);
+                } catch (e) {
+                    console.log('Speech Error:', e);
+                }
+            }, 60);
+        }
+
+        function unlockAudioEngine() {
+            initAudioContext();
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                
-                const cleanText = textToIndonesianWords(text);
-                const utterance = new SpeechSynthesisUtterance(cleanText);
-                utterance.lang = 'id-ID';
-                
-                if (!indonesianVoice) {
-                    loadIndonesianVoice();
-                }
-                
-                // Kunci mesin suara ke Bahasa Indonesia
-                if (indonesianVoice) {
-                    utterance.voice = indonesianVoice;
-                }
-                
-                utterance.rate = 0.85; // Kecepatan agak lambat agar jelas untuk anak SD
-                utterance.pitch = 1.0;
-                window.speechSynthesis.speak(utterance);
+                window.speechSynthesis.resume();
+                loadIndonesianVoice();
             }
         }
+
+        // Attach touch unlock listener for Mobile Autoplay policies
+        window.addEventListener('click', unlockAudioEngine, { once: true });
+        window.addEventListener('touchstart', unlockAudioEngine, { once: true });
 
         function toggleAudio() {
             isAudioMuted = !isAudioMuted;
             const btn = document.getElementById('icon-audio');
             if (isAudioMuted) {
                 btn.className = 'fa-solid fa-volume-xmark';
-                window.speechSynthesis.cancel();
+                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             } else {
                 btn.className = 'fa-solid fa-volume-high';
                 playSound('pop');
             }
         }
 
-        // --- SCREEN NAVIGATION & PROFILE ---
         function showScreen(screenId) {
             playSound('pop');
             ['screen-main-menu', 'screen-math-game', 'screen-reading-game', 'screen-bubble-game'].forEach(id => {
@@ -507,7 +570,6 @@
             updateProfileUI();
         }
 
-        // --- MATHEMATICS GAME ENGINE ---
         function startMathGame() {
             currentGameType = 'math';
             currentQuestionIndex = 0;
@@ -528,7 +590,6 @@
                 const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
                 if (currentGrade === 1) {
-                    // Grade 1: Addition & Subtraction up to 10
                     operator = Math.random() > 0.3 ? '+' : '-';
                     if (operator === '+') {
                         num1 = Math.floor(Math.random() * 5) + 1;
@@ -540,7 +601,6 @@
                         answer = num1 - num2;
                     }
                 } else if (currentGrade === 2) {
-                    // Grade 2: Numbers up to 20
                     operator = Math.random() > 0.4 ? '+' : '-';
                     if (operator === '+') {
                         num1 = Math.floor(Math.random() * 10) + 5;
@@ -552,7 +612,6 @@
                         answer = num1 - num2;
                     }
                 } else {
-                    // Grade 3: Multiplication & Addition up to 50
                     operator = Math.random() > 0.5 ? 'x' : '+';
                     if (operator === 'x') {
                         num1 = Math.floor(Math.random() * 5) + 2;
@@ -565,7 +624,6 @@
                     }
                 }
 
-                // Options generation
                 let options = [answer];
                 while (options.length < 4) {
                     let wrong = answer + (Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 4) + 1);
@@ -582,7 +640,6 @@
             document.getElementById('math-question-count').innerText = `${currentQuestionIndex + 1}/5`;
             document.getElementById('math-question-text').innerText = `${q.num1} ${q.operator} ${q.num2} = ?`;
 
-            // Render visual emojis for Grade 1
             const visualContainer = document.getElementById('math-visual-container');
             visualContainer.innerHTML = '';
             
@@ -595,7 +652,6 @@
                 visualContainer.innerHTML = html;
             }
 
-            // Render Options
             const optionsGrid = document.getElementById('math-options-grid');
             optionsGrid.innerHTML = '';
             document.getElementById('math-feedback').classList.add('hidden');
@@ -628,7 +684,6 @@
                 speakText(`Jawaban yang betul adalah ${correct}`);
             }
 
-            // Disable all buttons briefly
             const btns = document.querySelectorAll('#math-options-grid button');
             btns.forEach(b => b.disabled = true);
 
@@ -642,7 +697,6 @@
             }, 1800);
         }
 
-        // --- READING & SYLLABLE GAME ENGINE ---
         const readingDatabase = {
             1: [
                 { word: 'BAJU', syllables: ['BA', 'JU'], emoji: '👕', options: ['BA', 'JU', 'BU', 'JA'] },
@@ -687,7 +741,6 @@
             document.getElementById('reading-image-emoji').innerText = q.emoji;
             document.getElementById('reading-feedback').classList.add('hidden');
 
-            // Render Slots
             const displayArea = document.getElementById('reading-word-display');
             displayArea.innerHTML = '';
             q.syllables.forEach((syl, idx) => {
@@ -698,11 +751,9 @@
                 displayArea.appendChild(slot);
             });
 
-            // Render Choices
             const choicesArea = document.getElementById('reading-choices-grid');
             choicesArea.innerHTML = '';
             
-            // Shuffle choices
             let choices = [...q.options].sort(() => Math.random() - 0.5);
             choices.forEach(syl => {
                 const btn = document.createElement('button');
@@ -733,7 +784,6 @@
                 slot.innerText = syl;
                 slot.className = 'w-20 h-16 bg-cyan-500 text-white border-4 border-cyan-600 rounded-2xl flex items-center justify-center font-extrabold text-2xl shadow-lg animate-bounce';
 
-                // Check if filled complete
                 if (userBuiltSyllables.length === targetSyllables.length) {
                     checkReadingAnswer();
                 }
@@ -768,7 +818,6 @@
             }, 2000);
         }
 
-        // --- SPEED BUBBLE POP GAME ENGINE ---
         function startBubbleGame() {
             currentGameType = 'bubble';
             bubbleScore = 0;
@@ -780,7 +829,6 @@
             showScreen('screen-bubble-game');
             speakText('Tangkap gelembung angka genap!');
 
-            // Start timer
             if (bubbleTimer) clearInterval(bubbleTimer);
             bubbleTimer = setInterval(() => {
                 bubbleTimeLeft--;
@@ -805,7 +853,6 @@
                 const bubble = document.createElement('button');
                 bubble.className = 'absolute floating-bubble w-20 h-20 bg-gradient-to-tr from-cyan-400 to-fuchsia-400/80 rounded-full border-4 border-white text-white font-extrabold text-3xl shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition';
                 
-                // Random position and delay
                 bubble.style.left = `${Math.random() * 80 + 5}%`;
                 bubble.style.animationDelay = `${Math.random() * 3}s`;
                 bubble.style.animationDuration = `${Math.random() * 3 + 4}s`;
@@ -813,14 +860,12 @@
 
                 bubble.onclick = () => {
                     if (val % 2 === 0) {
-                        // Correct (Even)
                         playSound('pop');
                         bubbleScore += 10;
                         document.getElementById('bubble-score').innerText = bubbleScore;
                         bubble.className += ' scale-150 opacity-0 bg-emerald-400';
                         setTimeout(() => bubble.remove(), 200);
                     } else {
-                        // Wrong
                         playSound('wrong');
                         bubbleScore = Math.max(0, bubbleScore - 5);
                         document.getElementById('bubble-score').innerText = bubbleScore;
@@ -848,7 +893,6 @@
             showScreen('screen-main-menu');
         }
 
-        // --- GAME FINISH & REWARDS ---
         function finishGame() {
             playSound('victory');
             const starsEarned = correctAnswersCount * 3 + 5;
@@ -860,7 +904,6 @@
             document.getElementById('modal-accuracy').innerText = `${accuracy}%`;
             document.getElementById('modal-victory').classList.remove('hidden');
 
-            // Trigger confetti
             confetti({
                 particleCount: 120,
                 spread: 80,
@@ -881,7 +924,6 @@
             else if (currentGameType === 'bubble') startBubbleGame();
         }
 
-        // --- INITIALIZATION ON LOAD ---
         window.onload = function() {
             updateProfileUI();
             selectGrade(1);
