@@ -55,7 +55,7 @@
 </head>
 <body class="bg-gradient-to-b from-sky-400 via-indigo-200 to-purple-300 min-h-screen flex flex-col justify-between text-slate-800">
 
-    <header class="p-4 bg-white/80 backdrop-blur-md shadow-md rounded-b-3xl sticky top-0 z-40 max-w-5xl mx-auto w-full flex justify-between items-center px-6">
+    <header class="p-4 bg-white/80 backdrop-blur-md shadow-md rounded-b-3xl sticky top-0 z-40 max-w-5xl mx-auto w-full flex justify-between items-center px-4 sm:px-6">
         <div class="flex items-center space-x-3 cursor-pointer" onclick="showScreen('screen-main-menu')">
             <div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center overflow-hidden shadow-lg bounce-hover border-2 border-amber-300">
                 <img src="https://lh3.googleusercontent.com/d/19gOxPGN2oPJgTlnVsftcvoPHrSe41CdR" 
@@ -64,27 +64,33 @@
                      onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-school text-white text-xl\'></i>';">
             </div>
             <div>
-                <h1 class="font-bold text-lg sm:text-xl text-indigo-900 leading-none">SD NEGERI KALISARI</h1>
-                <p class="text-xs text-indigo-600 font-medium">Petualangan Belajar Interaktif</p>
+                <h1 class="font-bold text-base sm:text-xl text-indigo-900 leading-none">SD NEGERI KALISARI</h1>
+                <p class="text-[10px] sm:text-xs text-indigo-600 font-medium">Petualangan Belajar Interaktif</p>
             </div>
         </div>
 
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2 sm:space-x-4">
             <!-- Profil Pemain -->
-            <button onclick="openAvatarModal()" class="flex items-center space-x-2 bg-indigo-100 hover:bg-indigo-200 p-2 pr-4 rounded-full transition active-press border-2 border-indigo-300">
-                <span id="player-avatar-icon" class="text-2xl bg-white rounded-full w-9 h-9 flex items-center justify-center shadow">🚀</span>
-                <span id="player-name" class="font-semibold text-indigo-900 text-sm hidden sm:inline">Adik Pintar</span>
+            <button onclick="openAvatarModal()" class="flex items-center space-x-2 bg-indigo-100 hover:bg-indigo-200 p-2 pr-3 sm:pr-4 rounded-full transition active-press border-2 border-indigo-300">
+                <span id="player-avatar-icon" class="text-xl sm:text-2xl bg-white rounded-full w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center shadow">🚀</span>
+                <span id="player-name" class="font-semibold text-indigo-900 text-xs sm:text-sm hidden sm:inline">Adik Pintar</span>
+            </button>
+
+            <!-- Pilihan Suara Guru -->
+            <button onclick="toggleTeacherGender()" id="btn-teacher-voice" title="Ganti Suara Guru" class="flex items-center space-x-1 bg-purple-100 hover:bg-purple-200 border-2 border-purple-300 px-2.5 py-1.5 rounded-full shadow-sm transition active-press">
+                <span id="teacher-gender-icon" class="text-lg">👩‍🏫</span>
+                <span id="teacher-gender-text" class="text-xs font-bold text-purple-900 hidden md:inline">Bu Guru</span>
             </button>
 
             <!-- Skor Bintang -->
             <div class="flex items-center space-x-1 bg-amber-100 border-2 border-amber-300 px-3 py-1.5 rounded-full shadow-sm">
-                <i class="fa-solid fa-star text-amber-500 text-lg pulse-star"></i>
-                <span id="total-stars" class="font-extrabold text-amber-700 text-lg">0</span>
+                <i class="fa-solid fa-star text-amber-500 text-base sm:text-lg pulse-star"></i>
+                <span id="total-stars" class="font-extrabold text-amber-700 text-base sm:text-lg">0</span>
             </div>
 
-            <!-- Tombol Suara -->
-            <button onclick="toggleAudio()" id="btn-audio-toggle" class="w-10 h-10 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full flex items-center justify-center shadow transition active-press">
-                <i id="icon-audio" class="fa-solid fa-volume-high"></i>
+            <!-- Tombol Suara Mute/Unmute -->
+            <button onclick="toggleAudio()" id="btn-audio-toggle" class="w-9 h-9 sm:w-10 sm:h-10 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full flex items-center justify-center shadow transition active-press">
+                <i id="icon-audio" class="fa-solid fa-volume-high text-sm sm:text-base"></i>
             </button>
         </div>
     </header>
@@ -93,78 +99,78 @@
 
         <!-- TAMPILAN UTAMA & PILIHAN KELAS -->
         <section id="screen-main-menu" class="w-full flex flex-col items-center text-center space-y-6">
-            <div class="bg-white/90 p-6 rounded-3xl shadow-xl max-w-2xl w-full border-4 border-amber-300 relative overflow-hidden">
+            <div class="bg-white/90 p-5 sm:p-6 rounded-3xl shadow-xl max-w-2xl w-full border-4 border-amber-300 relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-200 rounded-full blur-2xl opacity-50"></div>
                 
                 <div class="flex flex-col items-center justify-center mb-4">
                     <img src="https://lh3.googleusercontent.com/d/19gOxPGN2oPJgTlnVsftcvoPHrSe41CdR" 
                          alt="Logo SD Negeri Kalisari" 
-                         class="w-20 h-20 object-contain mb-2 drop-shadow-md"
+                         class="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-2 drop-shadow-md"
                          onerror="this.onerror=null; this.style.display='none';">
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-indigo-900 tracking-wide uppercase">
+                    <h2 class="text-xl sm:text-3xl font-extrabold text-indigo-900 tracking-wide uppercase">
                         PETUALANGAN BELAJAR SD NEGERI KALISARI
                     </h2>
-                    <p class="text-slate-600 text-sm sm:text-base mt-1">Pilih kelasmu untuk mulai berpetualang!</p>
+                    <p class="text-slate-600 text-xs sm:text-base mt-1">Pilih kelasmu untuk mulai berpetualang!</p>
                     <span class="mt-2 bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300">
-                        ✨ Bank Soal: 100+ Kosakata & Variasi Unik
+                        ✨ Pembelajaran Lengkap & Suara Guru Interaktif
                     </span>
                 </div>
 
                 <!-- Kartu Pilihan Kelas -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                    <button onclick="selectGrade(1)" id="grade-btn-1" class="grade-card p-5 bg-gradient-to-br from-emerald-400 to-teal-500 text-white rounded-2xl shadow-lg border-b-4 border-teal-700 bounce-hover transition active-press text-left flex flex-col justify-between h-36 border-4 border-yellow-300 scale-105">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
+                    <button onclick="selectGrade(1)" id="grade-btn-1" class="grade-card p-4 sm:p-5 bg-gradient-to-br from-emerald-400 to-teal-500 text-white rounded-2xl shadow-lg border-b-4 border-teal-700 bounce-hover transition active-press text-left flex flex-col justify-between h-32 sm:h-36 border-4 border-yellow-300 scale-105">
                         <div class="flex justify-between items-center">
-                            <span class="text-3xl">🌱</span>
-                            <span class="bg-white/30 text-xs px-2 py-1 rounded-full font-bold">Umur 6-7 thn</span>
+                            <span class="text-2xl sm:text-3xl">🌱</span>
+                            <span class="bg-white/30 text-[10px] sm:text-xs px-2 py-0.5 sm:py-1 rounded-full font-bold">Umur 6-7 thn</span>
                         </div>
                         <div>
-                            <span class="text-xs font-semibold opacity-90 block">Tingkat Awal</span>
-                            <span class="text-2xl font-bold">Kelas 1 SD</span>
+                            <span class="text-[10px] sm:text-xs font-semibold opacity-90 block">Tingkat Awal</span>
+                            <span class="text-xl sm:text-2xl font-bold">Kelas 1 SD</span>
                         </div>
                     </button>
 
-                    <button onclick="selectGrade(2)" id="grade-btn-2" class="grade-card p-5 bg-gradient-to-br from-sky-400 to-indigo-500 text-white rounded-2xl shadow-lg border-b-4 border-indigo-700 bounce-hover transition active-press text-left flex flex-col justify-between h-36">
+                    <button onclick="selectGrade(2)" id="grade-btn-2" class="grade-card p-4 sm:p-5 bg-gradient-to-br from-sky-400 to-indigo-500 text-white rounded-2xl shadow-lg border-b-4 border-indigo-700 bounce-hover transition active-press text-left flex flex-col justify-between h-32 sm:h-36">
                         <div class="flex justify-between items-center">
-                            <span class="text-3xl">🚀</span>
-                            <span class="bg-white/30 text-xs px-2 py-1 rounded-full font-bold">Umur 7-8 thn</span>
+                            <span class="text-2xl sm:text-3xl">🚀</span>
+                            <span class="bg-white/30 text-[10px] sm:text-xs px-2 py-0.5 sm:py-1 rounded-full font-bold">Umur 7-8 thn</span>
                         </div>
                         <div>
-                            <span class="text-xs font-semibold opacity-90 block">Tingkat Menengah</span>
-                            <span class="text-2xl font-bold">Kelas 2 SD</span>
+                            <span class="text-[10px] sm:text-xs font-semibold opacity-90 block">Tingkat Menengah</span>
+                            <span class="text-xl sm:text-2xl font-bold">Kelas 2 SD</span>
                         </div>
                     </button>
 
-                    <button onclick="selectGrade(3)" id="grade-btn-3" class="grade-card p-5 bg-gradient-to-br from-purple-400 to-pink-500 text-white rounded-2xl shadow-lg border-b-4 border-purple-700 bounce-hover transition active-press text-left flex flex-col justify-between h-36">
+                    <button onclick="selectGrade(3)" id="grade-btn-3" class="grade-card p-4 sm:p-5 bg-gradient-to-br from-purple-400 to-pink-500 text-white rounded-2xl shadow-lg border-b-4 border-purple-700 bounce-hover transition active-press text-left flex flex-col justify-between h-32 sm:h-36">
                         <div class="flex justify-between items-center">
-                            <span class="text-3xl">👑</span>
-                            <span class="bg-white/30 text-xs px-2 py-1 rounded-full font-bold">Umur 8-9 thn</span>
+                            <span class="text-2xl sm:text-3xl">👑</span>
+                            <span class="bg-white/30 text-[10px] sm:text-xs px-2 py-0.5 sm:py-1 rounded-full font-bold">Umur 8-9 thn</span>
                         </div>
                         <div>
-                            <span class="text-xs font-semibold opacity-90 block">Tingkat Mahir</span>
-                            <span class="text-2xl font-bold">Kelas 3 SD</span>
+                            <span class="text-[10px] sm:text-xs font-semibold opacity-90 block">Tingkat Mahir</span>
+                            <span class="text-xl sm:text-2xl font-bold">Kelas 3 SD</span>
                         </div>
                     </button>
                 </div>
 
-                <!-- Tombol Permainan -->
-                <h3 class="text-xl font-bold text-indigo-900 mb-4 flex items-center justify-center gap-2">
+                <!-- Tombol Utama Permainan -->
+                <h3 class="text-lg sm:text-xl font-bold text-indigo-900 mb-4 flex items-center justify-center gap-2">
                     <i class="fa-solid fa-gamepad text-amber-500"></i> Pilih Permainan:
                 </h3>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <button onclick="startMathGame()" class="p-4 bg-gradient-to-r from-orange-400 to-amber-500 text-white rounded-2xl shadow-lg hover:brightness-105 transition active-press flex items-center space-x-3 border-b-4 border-orange-700">
+                    <button onclick="openMathSubMenu()" class="p-4 bg-gradient-to-r from-orange-400 to-amber-500 text-white rounded-2xl shadow-lg hover:brightness-105 transition active-press flex items-center space-x-3 border-b-4 border-orange-700">
                         <span class="text-3xl bg-white/20 p-2 rounded-xl">🔢</span>
                         <div class="text-left">
                             <div class="font-bold text-lg leading-tight">Matematika</div>
-                            <div class="text-xs text-orange-100">Berhitung & Angka</div>
+                            <div class="text-xs text-orange-100">Tambah, Kurang, Kali, Bagi</div>
                         </div>
                     </button>
 
-                    <button onclick="startReadingGame()" class="p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl shadow-lg hover:brightness-105 transition active-press flex items-center space-x-3 border-b-4 border-blue-700">
+                    <button onclick="openReadingSubMenu()" class="p-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl shadow-lg hover:brightness-105 transition active-press flex items-center space-x-3 border-b-4 border-blue-700">
                         <span class="text-3xl bg-white/20 p-2 rounded-xl">📖</span>
                         <div class="text-left">
                             <div class="font-bold text-lg leading-tight">Membaca</div>
-                            <div class="text-xs text-blue-100">Ejaan & Suku Kata</div>
+                            <div class="text-xs text-blue-100">Suku Kata & Susun Kalimat</div>
                         </div>
                     </button>
 
@@ -179,15 +185,96 @@
             </div>
         </section>
 
+        <!-- SUB MENU MATEMATIKA -->
+        <section id="screen-math-submenu" class="w-full max-w-2xl hidden">
+            <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-orange-400 relative text-center">
+                <button onclick="showScreen('screen-main-menu')" class="absolute top-4 left-4 px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-xs flex items-center space-x-1">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Kembali</span>
+                </button>
+
+                <h3 class="text-2xl font-extrabold text-indigo-900 mt-2 mb-1">PILIH OPERASI MATEMATIKA</h3>
+                <p class="text-xs text-slate-500 mb-6">Pilih jenis latihan berhitung yang ingin kamu pelajari:</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <button onclick="startMathGame('add')" class="p-4 bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-400 rounded-2xl flex items-center space-x-4 transition active-press shadow-sm">
+                        <span class="text-3xl bg-emerald-500 text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold">➕</span>
+                        <div>
+                            <div class="font-bold text-indigo-900 text-lg">Penjumlahan</div>
+                            <div class="text-xs text-slate-500">Menjumlahkan angka</div>
+                        </div>
+                    </button>
+
+                    <button onclick="startMathGame('sub')" class="p-4 bg-rose-50 hover:bg-rose-100 border-2 border-rose-400 rounded-2xl flex items-center space-x-4 transition active-press shadow-sm">
+                        <span class="text-3xl bg-rose-500 text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold">➖</span>
+                        <div>
+                            <div class="font-bold text-indigo-900 text-lg">Pengurangan</div>
+                            <div class="text-xs text-slate-500">Mengurangi angka</div>
+                        </div>
+                    </button>
+
+                    <button onclick="startMathGame('mul')" class="p-4 bg-amber-50 hover:bg-amber-100 border-2 border-amber-400 rounded-2xl flex items-center space-x-4 transition active-press shadow-sm">
+                        <span class="text-3xl bg-amber-500 text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold">✖️</span>
+                        <div>
+                            <div class="font-bold text-indigo-900 text-lg">Perkalian</div>
+                            <div class="text-xs text-slate-500">Perkalian angka dasar</div>
+                        </div>
+                    </button>
+
+                    <button onclick="startMathGame('div')" class="p-4 bg-sky-50 hover:bg-sky-100 border-2 border-sky-400 rounded-2xl flex items-center space-x-4 transition active-press shadow-sm">
+                        <span class="text-3xl bg-sky-500 text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold">➗</span>
+                        <div>
+                            <div class="font-bold text-indigo-900 text-lg">Pembagian</div>
+                            <div class="text-xs text-slate-500">Pembagian angka pas</div>
+                        </div>
+                    </button>
+                </div>
+
+                <button onclick="startMathGame('mix')" class="w-full mt-4 p-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold rounded-2xl shadow-md hover:brightness-105 transition active-press flex items-center justify-center space-x-2">
+                    <span class="text-2xl">🎲</span>
+                    <span>Campuran Semua Operasi</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SUB MENU MEMBACA -->
+        <section id="screen-reading-submenu" class="w-full max-w-2xl hidden">
+            <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-cyan-400 relative text-center">
+                <button onclick="showScreen('screen-main-menu')" class="absolute top-4 left-4 px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-xs flex items-center space-x-1">
+                    <i class="fa-solid fa-arrow-left"></i> <span>Kembali</span>
+                </button>
+
+                <h3 class="text-2xl font-extrabold text-indigo-900 mt-2 mb-1">PILIH MODE MEMBACA</h3>
+                <p class="text-xs text-slate-500 mb-6">Pilih jenis latihan membaca yang ingin dimainkan:</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <button onclick="startReadingGame('syllable')" class="p-5 bg-cyan-50 hover:bg-cyan-100 border-2 border-cyan-400 rounded-2xl flex items-center space-x-4 transition active-press shadow-sm">
+                        <span class="text-3xl bg-cyan-500 text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold">🔤</span>
+                        <div>
+                            <div class="font-bold text-indigo-900 text-lg">Susun Suku Kata</div>
+                            <div class="text-xs text-slate-500">Menyusun suku kata bergambar</div>
+                        </div>
+                    </button>
+
+                    <button onclick="startReadingGame('sentence')" class="p-5 bg-indigo-50 hover:bg-indigo-100 border-2 border-indigo-400 rounded-2xl flex items-center space-x-4 transition active-press shadow-sm">
+                        <span class="text-3xl bg-indigo-500 text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold">📝</span>
+                        <div>
+                            <div class="font-bold text-indigo-900 text-lg">Susun Kalimat</div>
+                            <div class="text-xs text-slate-500">Menyusun kata menjadi kalimat</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- GAME MATEMATIKA -->
         <section id="screen-math-game" class="w-full max-w-2xl hidden">
             <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-orange-400 relative">
                 <div class="flex justify-between items-center mb-6 pb-3 border-b-2 border-slate-100">
-                    <button onclick="showScreen('screen-main-menu')" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-sm flex items-center space-x-2">
-                        <i class="fa-solid fa-arrow-left"></i> <span>Kembali</span>
+                    <button onclick="showScreen('screen-math-submenu')" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-sm flex items-center space-x-2">
+                        <i class="fa-solid fa-arrow-left"></i> <span>Menu Mode</span>
                     </button>
                     <div class="text-center">
-                        <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Mode Matematika</span>
+                        <span id="math-mode-title" class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Penjumlahan</span>
                         <span id="math-grade-badge" class="bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full font-extrabold">Kelas 1</span>
                     </div>
                     <div class="bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-xl text-sm flex items-center space-x-1">
@@ -213,15 +300,15 @@
             </div>
         </section>
 
-        <!-- GAME MEMBACA -->
+        <!-- GAME MEMBACA (SUKU KATA / KALIMAT) -->
         <section id="screen-reading-game" class="w-full max-w-2xl hidden">
             <div class="bg-white/95 p-6 rounded-3xl shadow-2xl border-4 border-cyan-400 relative">
                 <div class="flex justify-between items-center mb-6 pb-3 border-b-2 border-slate-100">
-                    <button onclick="showScreen('screen-main-menu')" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-sm flex items-center space-x-2">
-                        <i class="fa-solid fa-arrow-left"></i> <span>Kembali</span>
+                    <button onclick="showScreen('screen-reading-submenu')" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl transition text-sm flex items-center space-x-2">
+                        <i class="fa-solid fa-arrow-left"></i> <span>Menu Mode</span>
                     </button>
                     <div class="text-center">
-                        <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Mode Membaca</span>
+                        <span id="reading-mode-title" class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Mode Membaca</span>
                         <span id="reading-grade-badge" class="bg-cyan-100 text-cyan-700 text-xs px-3 py-1 rounded-full font-extrabold">Kelas 1</span>
                     </div>
                     <button onclick="speakCurrentWord()" class="px-3 py-1.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl text-sm font-bold flex items-center space-x-1 shadow">
@@ -230,7 +317,7 @@
                 </div>
 
                 <div class="text-center my-4">
-                    <div id="reading-image-emoji" class="text-7xl my-2 animate-bounce">
+                    <div id="reading-image-emoji" class="text-6xl sm:text-7xl my-2 animate-bounce">
                         👕
                     </div>
                     
@@ -238,10 +325,12 @@
                         Susun Suku Kata yang Benar:
                     </p>
 
-                    <div id="reading-word-display" class="flex justify-center items-center gap-2 my-4">
+                    <!-- Tempat Menyusun (Slot) -->
+                    <div id="reading-word-display" class="flex flex-wrap justify-center items-center gap-2 my-4 min-h-[64px]">
                     </div>
                 </div>
 
+                <!-- Pilihan yang Bisa Diklik -->
                 <div id="reading-choices-grid" class="flex flex-wrap justify-center gap-3 my-6">
                 </div>
 
@@ -314,13 +403,26 @@
             </div>
         </div>
 
-        <!-- MODAL PROFIL PLAYER -->
+        <!-- MODAL PROFIL PLAYER & SUARA GURU -->
         <div id="modal-avatar" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
             <div class="bg-white rounded-3xl p-6 max-w-md w-full text-center shadow-2xl border-4 border-indigo-300">
-                <h3 class="text-2xl font-bold text-indigo-900 mb-2">Ganti Profil & Avatar</h3>
-                <p class="text-xs text-slate-500 mb-4">Tulis namamu dan pilih karakter favorit!</p>
+                <h3 class="text-2xl font-bold text-indigo-900 mb-2">Profil & Suara Guru</h3>
+                <p class="text-xs text-slate-500 mb-4">Atur namamu dan tentukan jenis suara guru pengajar!</p>
 
                 <input type="text" id="input-player-name" placeholder="Nama Lengkap / Panggilan" class="w-full px-4 py-3 rounded-2xl border-2 border-indigo-200 focus:outline-none focus:border-indigo-500 font-bold text-center mb-4 text-lg">
+
+                <!-- Pengaturan Suara Guru -->
+                <div class="mb-4 bg-purple-50 p-3 rounded-2xl border border-purple-200 text-left">
+                    <span class="text-xs font-bold text-purple-900 block mb-2 text-center">Pilih Suara Guru Pengajar:</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="setTeacherGender('female')" id="btn-select-female" class="p-2 bg-white border-2 border-purple-400 rounded-xl flex items-center justify-center space-x-2 font-bold text-purple-900 text-sm">
+                            <span>👩‍🏫 Bu Guru</span>
+                        </button>
+                        <button onclick="setTeacherGender('male')" id="btn-select-male" class="p-2 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center space-x-2 font-bold text-slate-700 text-sm opacity-60">
+                            <span>👨‍🏫 Pak Guru</span>
+                        </button>
+                    </div>
+                </div>
 
                 <div class="grid grid-cols-4 gap-3 mb-6">
                     <button onclick="selectAvatar('🚀')" class="avatar-option text-3xl p-3 bg-indigo-50 hover:bg-indigo-100 rounded-2xl border-2 border-indigo-200 transition">🚀</button>
@@ -351,9 +453,13 @@
         let totalStars = parseInt(localStorage.getItem('bintang_cilik_stars')) || 0;
         let playerName = localStorage.getItem('bintang_cilik_name') || 'Adik Pintar';
         let playerAvatar = localStorage.getItem('bintang_cilik_avatar') || '🚀';
+        let teacherGender = localStorage.getItem('bintang_cilik_teacher') || 'female'; // 'female' (Bu Guru) or 'male' (Pak Guru)
         let isAudioMuted = false;
 
         let currentGameType = ''; 
+        let currentMathOp = 'add'; // 'add', 'sub', 'mul', 'div', 'mix'
+        let currentReadingMode = 'syllable'; // 'syllable' or 'sentence'
+        
         let currentQuestionIndex = 0;
         let correctAnswersCount = 0;
         let currentQuestionsList = [];
@@ -437,27 +543,24 @@
             }
         }
 
-        let indonesianVoice = null;
+        let indonesianVoices = [];
 
-        function loadIndonesianVoice() {
+        function loadIndonesianVoices() {
             if (!('speechSynthesis' in window)) return;
             const voices = window.speechSynthesis.getVoices();
             if (!voices || voices.length === 0) return;
             
-            indonesianVoice = voices.find(v => {
+            indonesianVoices = voices.filter(v => {
                 const lang = (v.lang || '').toLowerCase().replace('_', '-');
-                return lang === 'id-id' || lang === 'id';
-            }) || voices.find(v => {
-                const lang = (v.lang || '').toLowerCase();
                 const name = (v.name || '').toLowerCase();
                 return lang.startsWith('id') || name.includes('indonesia') || name.includes('indonesian');
-            }) || null;
+            });
         }
 
         if ('speechSynthesis' in window) {
-            loadIndonesianVoice();
+            loadIndonesianVoices();
             if (speechSynthesis.onvoiceschanged !== undefined) {
-                speechSynthesis.onvoiceschanged = loadIndonesianVoice;
+                speechSynthesis.onvoiceschanged = loadIndonesianVoices;
             }
         }
 
@@ -483,12 +586,13 @@
             let str = String(text);
             
             // Hapus emoji
-            str = str.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
+            str = str.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
             
             // Ubah simbol matematika
             str = str.replace(/\+/g, ' ditambah ');
             str = str.replace(/-/g, ' dikurangi ');
-            str = str.replace(/x/gi, ' dikali ');
+            str = str.replace(/[x×\*]/gi, ' dikali ');
+            str = str.replace(/÷/g, ' dibagi ');
             str = str.replace(/=/g, ' sama dengan ');
             str = str.replace(/\?/g, '');
             
@@ -511,21 +615,67 @@
                     const utterance = new SpeechSynthesisUtterance(cleanText);
                     utterance.lang = 'id-ID';
 
-                    if (!indonesianVoice) {
-                        loadIndonesianVoice();
-                    }
-                    if (indonesianVoice) {
-                        utterance.voice = indonesianVoice;
+                    loadIndonesianVoices();
+
+                    // Pilih suara spesifik jika tersedia
+                    if (indonesianVoices.length > 0) {
+                        if (teacherGender === 'male') {
+                            const maleVoice = indonesianVoices.find(v => v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('pria') || v.name.toLowerCase().includes('laki'));
+                            utterance.voice = maleVoice || indonesianVoices[0];
+                        } else {
+                            const femaleVoice = indonesianVoices.find(v => v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('wanita') || v.name.toLowerCase().includes('perempuan'));
+                            utterance.voice = femaleVoice || indonesianVoices[0];
+                        }
                     }
 
-                    utterance.rate = 0.85;
-                    utterance.pitch = 1.0;
+                    // Setting Pitch dan Rate sesuai Guru Laki-laki / Perempuan
+                    if (teacherGender === 'male') {
+                        utterance.pitch = 0.8; // Pitch rendah untuk Pak Guru
+                        utterance.rate = 0.85;
+                    } else {
+                        utterance.pitch = 1.25; // Pitch agak cerah untuk Bu Guru
+                        utterance.rate = 0.85;
+                    }
 
                     window.speechSynthesis.speak(utterance);
                 } catch (e) {
                     console.log('Speech Error:', e);
                 }
             }, 50);
+        }
+
+        function toggleTeacherGender() {
+            teacherGender = teacherGender === 'female' ? 'male' : 'female';
+            localStorage.setItem('bintang_cilik_teacher', teacherGender);
+            updateTeacherGenderUI();
+            playSound('pop');
+            speakText(teacherGender === 'female' ? 'Suara diajar oleh Bu Guru' : 'Suara diajar oleh Pak Guru');
+        }
+
+        function setTeacherGender(gender) {
+            teacherGender = gender;
+            localStorage.setItem('bintang_cilik_teacher', teacherGender);
+            updateTeacherGenderUI();
+            playSound('pop');
+        }
+
+        function updateTeacherGenderUI() {
+            const icon = document.getElementById('teacher-gender-icon');
+            const text = document.getElementById('teacher-gender-text');
+            const btnFemale = document.getElementById('btn-select-female');
+            const btnMale = document.getElementById('btn-select-male');
+
+            if (teacherGender === 'female') {
+                if (icon) icon.innerText = '👩‍🏫';
+                if (text) text.innerText = 'Bu Guru';
+                if (btnFemale) btnFemale.className = 'p-2 bg-white border-2 border-purple-500 rounded-xl flex items-center justify-center space-x-2 font-bold text-purple-900 text-sm shadow-sm';
+                if (btnMale) btnMale.className = 'p-2 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center space-x-2 font-bold text-slate-500 text-sm opacity-60';
+            } else {
+                if (icon) icon.innerText = '👨‍🏫';
+                if (text) text.innerText = 'Pak Guru';
+                if (btnFemale) btnFemale.className = 'p-2 bg-white border-2 border-slate-200 rounded-xl flex items-center justify-center space-x-2 font-bold text-slate-500 text-sm opacity-60';
+                if (btnMale) btnMale.className = 'p-2 bg-white border-2 border-indigo-500 rounded-xl flex items-center justify-center space-x-2 font-bold text-indigo-900 text-sm shadow-sm';
+            }
         }
 
         function unlockAudioEngine() {
@@ -536,7 +686,7 @@
                     const dummy = new SpeechSynthesisUtterance(' ');
                     dummy.volume = 0.01;
                     window.speechSynthesis.speak(dummy);
-                    loadIndonesianVoice();
+                    loadIndonesianVoices();
                 } catch (e) {}
             }
         }
@@ -558,7 +708,7 @@
 
         function showScreen(screenId) {
             playSound('pop');
-            ['screen-main-menu', 'screen-math-game', 'screen-reading-game', 'screen-bubble-game'].forEach(id => {
+            ['screen-main-menu', 'screen-math-submenu', 'screen-reading-submenu', 'screen-math-game', 'screen-reading-game', 'screen-bubble-game'].forEach(id => {
                 document.getElementById(id).classList.add('hidden');
             });
             document.getElementById(screenId).classList.remove('hidden');
@@ -568,6 +718,7 @@
             document.getElementById('total-stars').innerText = totalStars;
             document.getElementById('player-name').innerText = playerName;
             document.getElementById('player-avatar-icon').innerText = playerAvatar;
+            updateTeacherGenderUI();
         }
 
         function selectGrade(grade) {
@@ -587,6 +738,7 @@
         function openAvatarModal() {
             playSound('pop');
             document.getElementById('input-player-name').value = playerName;
+            updateTeacherGenderUI();
             document.getElementById('modal-avatar').classList.remove('hidden');
         }
 
@@ -603,6 +755,7 @@
             updateProfileUI();
             document.getElementById('modal-avatar').classList.add('hidden');
             playSound('correct');
+            speakText(`Profil disimpan. Halo ${playerName}!`);
         }
 
         function addStars(count) {
@@ -611,13 +764,35 @@
             updateProfileUI();
         }
 
-        // --- MATEMATIKA (GENERATOR DINAMIS RIBUAN SOAL) ---
-        function startMathGame() {
+        // --- NAVIGASI SUB MENU ---
+        function openMathSubMenu() {
+            showScreen('screen-math-submenu');
+            speakText('Pilih jenis soal matematika');
+        }
+
+        function openReadingSubMenu() {
+            showScreen('screen-reading-submenu');
+            speakText('Pilih mode belajar membaca');
+        }
+
+        // --- MATEMATIKA (PENJUMALAHAN, PENGURANGAN, PERKALIAN, PEMBAGIAN) ---
+        function startMathGame(opMode) {
             currentGameType = 'math';
+            currentMathOp = opMode || 'add';
             currentQuestionIndex = 0;
             correctAnswersCount = 0;
             
+            const titles = {
+                'add': 'Penjumlahan (+)',
+                'sub': 'Pengurangan (-)',
+                'mul': 'Perkalian (×)',
+                'div': 'Pembagian (÷)',
+                'mix': 'Campuran Matematika'
+            };
+
+            document.getElementById('math-mode-title').innerText = titles[currentMathOp];
             document.getElementById('math-grade-badge').innerText = `Kelas ${currentGrade}`;
+            
             generateMathQuestions();
             showScreen('screen-math-game');
             renderMathQuestion();
@@ -631,71 +806,76 @@
                 let num1, num2, operator, answer, questionText, visualAllowed = false;
                 const emoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-                if (currentGrade === 1) {
-                    // Kelas 1: Penjumlahan & Pengurangan dasar (1 - 10)
-                    operator = Math.random() > 0.4 ? '+' : '-';
-                    visualAllowed = true;
-                    if (operator === '+') {
+                let selectedOp = currentMathOp;
+                if (selectedOp === 'mix') {
+                    const mixOps = currentGrade === 1 ? ['add', 'sub'] : (currentGrade === 2 ? ['add', 'sub', 'mul'] : ['add', 'sub', 'mul', 'div']);
+                    selectedOp = mixOps[Math.floor(Math.random() * mixOps.length)];
+                }
+
+                if (selectedOp === 'add') {
+                    operator = '+';
+                    if (currentGrade === 1) {
                         num1 = Math.floor(Math.random() * 5) + 1;
                         num2 = Math.floor(Math.random() * 5) + 1;
-                        answer = num1 + num2;
-                    } else {
-                        num1 = Math.floor(Math.random() * 6) + 4;
-                        num2 = Math.floor(Math.random() * (num1 - 1)) + 1;
-                        answer = num1 - num2;
-                    }
-                    questionText = `${num1} ${operator} ${num2} = ?`;
-                } else if (currentGrade === 2) {
-                    // Kelas 2: Penjumlahan/Pengurangan sampai 50 & Perkalian Dasar (1-5)
-                    const mode = Math.random();
-                    if (mode < 0.4) {
-                        operator = '+';
+                        visualAllowed = true;
+                    } else if (currentGrade === 2) {
                         num1 = Math.floor(Math.random() * 25) + 5;
-                        num2 = Math.floor(Math.random() * 20) + 1;
-                        answer = num1 + num2;
-                        questionText = `${num1} + ${num2} = ?`;
-                    } else if (mode < 0.7) {
-                        operator = '-';
+                        num2 = Math.floor(Math.random() * 20) + 5;
+                    } else {
+                        num1 = Math.floor(Math.random() * 60) + 20;
+                        num2 = Math.floor(Math.random() * 40) + 10;
+                    }
+                    answer = num1 + num2;
+                    questionText = `${num1} + ${num2} = ?`;
+                } else if (selectedOp === 'sub') {
+                    operator = '-';
+                    if (currentGrade === 1) {
+                        num1 = Math.floor(Math.random() * 5) + 5;
+                        num2 = Math.floor(Math.random() * (num1 - 1)) + 1;
+                        visualAllowed = true;
+                    } else if (currentGrade === 2) {
                         num1 = Math.floor(Math.random() * 30) + 15;
                         num2 = Math.floor(Math.random() * 15) + 1;
-                        answer = num1 - num2;
-                        questionText = `${num1} - ${num2} = ?`;
                     } else {
-                        operator = 'x';
+                        num1 = Math.floor(Math.random() * 80) + 20;
+                        num2 = Math.floor(Math.random() * 30) + 10;
+                    }
+                    answer = num1 - num2;
+                    questionText = `${num1} - ${num2} = ?`;
+                } else if (selectedOp === 'mul') {
+                    operator = '×';
+                    if (currentGrade === 1) {
+                        num1 = Math.floor(Math.random() * 3) + 1;
+                        num2 = Math.floor(Math.random() * 4) + 1;
+                    } else if (currentGrade === 2) {
                         num1 = Math.floor(Math.random() * 5) + 2;
                         num2 = Math.floor(Math.random() * 5) + 1;
-                        answer = num1 * num2;
-                        questionText = `${num1} × ${num2} = ?`;
-                    }
-                } else {
-                    // Kelas 3: Perkalian sampai 10, Penjumlahan Ratusan, Soal Angka Misteri
-                    const mode = Math.random();
-                    if (mode < 0.4) {
-                        operator = 'x';
+                    } else {
                         num1 = Math.floor(Math.random() * 8) + 2;
                         num2 = Math.floor(Math.random() * 9) + 2;
-                        answer = num1 * num2;
-                        questionText = `${num1} × ${num2} = ?`;
-                    } else if (mode < 0.7) {
-                        operator = '+';
-                        num1 = Math.floor(Math.random() * 50) + 25;
-                        num2 = Math.floor(Math.random() * 40) + 10;
-                        answer = num1 + num2;
-                        questionText = `${num1} + ${num2} = ?`;
-                    } else {
-                        // Angka Misteri: ? + num2 = answer
-                        operator = '+';
-                        num2 = Math.floor(Math.random() * 15) + 5;
-                        answer = Math.floor(Math.random() * 25) + 20;
-                        num1 = answer - num2;
-                        questionText = `? + ${num2} = ${answer}`;
                     }
+                    answer = num1 * num2;
+                    questionText = `${num1} × ${num2} = ?`;
+                } else if (selectedOp === 'div') {
+                    operator = '÷';
+                    if (currentGrade === 1) {
+                        num2 = Math.floor(Math.random() * 3) + 1;
+                        answer = Math.floor(Math.random() * 4) + 1;
+                    } else if (currentGrade === 2) {
+                        num2 = Math.floor(Math.random() * 4) + 2;
+                        answer = Math.floor(Math.random() * 5) + 1;
+                    } else {
+                        num2 = Math.floor(Math.random() * 7) + 2;
+                        answer = Math.floor(Math.random() * 8) + 2;
+                    }
+                    num1 = num2 * answer; // Memastikan hasil pembagian bulat pas
+                    questionText = `${num1} ÷ ${num2} = ?`;
                 }
 
                 // Buat 4 Pilihan Jawaban Acak tanpa Duplikat
                 let options = [answer];
                 while (options.length < 4) {
-                    let offset = (Math.floor(Math.random() * 5) + 1) * (Math.random() > 0.5 ? 1 : -1);
+                    let offset = (Math.floor(Math.random() * 4) + 1) * (Math.random() > 0.5 ? 1 : -1);
                     let wrong = answer + offset;
                     if (wrong >= 0 && !options.includes(wrong)) {
                         options.push(wrong);
@@ -769,7 +949,7 @@
             }, 1800);
         }
 
-        // --- MEMBACA (BANK DATA 100+ KOSAKATA BERJENJANG) ---
+        // --- BANK DATA MEMBACA: SUKU KATA & KALIMAT ---
         const readingDatabase = {
             1: [
                 { word: 'BAJU', syllables: ['BA', 'JU'], emoji: '👕', options: ['BA', 'JU', 'BU', 'JA', 'JI'] },
@@ -778,114 +958,72 @@
                 { word: 'KUDA', syllables: ['KU', 'DA'], emoji: '🐴', options: ['KU', 'DA', 'KA', 'DU', 'DI'] },
                 { word: 'MATA', syllables: ['MA', 'TA'], emoji: '👁️', options: ['MA', 'TA', 'MU', 'TI', 'MO'] },
                 { word: 'ROTI', syllables: ['RO', 'TI'], emoji: '🍞', options: ['RO', 'TI', 'RA', 'TO', 'RU'] },
-                { word: 'NANA', syllables: ['NA', 'NA'], emoji: '👧', options: ['NA', 'NI', 'NU', 'NO', 'NE'] },
-                { word: 'TOPI', syllables: ['TO', 'PI'], emoji: '🧢', options: ['TO', 'PI', 'TA', 'PO', 'PU'] },
                 { word: 'SAPU', syllables: ['SA', 'PU'], emoji: '🧹', options: ['SA', 'PU', 'SI', 'PA', 'PO'] },
-                { word: 'DASI', syllables: ['DA', 'SI'], emoji: '👔', options: ['DA', 'SI', 'DU', 'SA', 'SO'] },
-                { word: 'APEL', syllables: ['A', 'PEL'], emoji: '🍎', options: ['A', 'PEL', 'E', 'PAL', 'POL'] },
-                { word: 'PALU', syllables: ['PA', 'LU'], emoji: '🔨', options: ['PA', 'LU', 'PU', 'LA', 'LO'] },
-                { word: 'KAKI', syllables: ['KA', 'KI'], emoji: '🦶', options: ['KA', 'KI', 'KU', 'KO', 'KE'] },
-                { word: 'GIGI', syllables: ['GI', 'GI'], emoji: '🦷', options: ['GI', 'GA', 'GU', 'GO', 'GE'] },
-                { word: 'JARI', syllables: ['JA', 'RI'], emoji: '🖐️', options: ['JA', 'RI', 'JU', 'RA', 'RO'] },
-                { word: 'SAPI', syllables: ['SA', 'PI'], emoji: '🐄', options: ['SA', 'PI', 'SO', 'PU', 'SI'] },
-                { word: 'RODA', syllables: ['RO', 'DA'], emoji: '🛞', options: ['RO', 'DA', 'RA', 'DU', 'DI'] },
-                { word: 'KAYU', syllables: ['KA', 'YU'], emoji: '🪵', options: ['KA', 'YU', 'KU', 'YA', 'YO'] },
-                { word: 'CABAI', syllables: ['CA', 'BAI'], emoji: '🌶️', options: ['CA', 'BAI', 'CU', 'BA', 'BI'] },
-                { word: 'CEKO', syllables: ['CE', 'KO'], emoji: '☕️', options: ['CE', 'KO', 'CA', 'KI', 'KU'] },
-                { word: 'NAGA', syllables: ['NA', 'GA'], emoji: '🐉', options: ['NA', 'GA', 'NI', 'GU', 'GO'] },
+                { word: 'TOPI', syllables: ['TO', 'PI'], emoji: '🧢', options: ['TO', 'PI', 'TA', 'PO', 'PU'] },
                 { word: 'SUSU', syllables: ['SU', 'SU'], emoji: '🥛', options: ['SU', 'SA', 'SI', 'SO', 'SE'] },
-                { word: 'PITA', syllables: ['PI', 'TA'], emoji: '🎀', options: ['PI', 'TA', 'PO', 'TI', 'TU'] },
-                { word: 'LABU', syllables: ['LA', 'BU'], emoji: '🎃', options: ['LA', 'BU', 'LI', 'BA', 'BO'] },
-                { word: 'PENA', syllables: ['PE', 'NA'], emoji: '🖊️', options: ['PE', 'NA', 'PA', 'NI', 'NU'] },
-                { word: 'PISANG', syllables: ['PI', 'SANG'], emoji: '🍌', options: ['PI', 'SANG', 'PA', 'SING', 'SUNG'] },
-                { word: 'MEJA', syllables: ['ME', 'JA'], emoji: '🪑', options: ['ME', 'JA', 'MA', 'JU', 'JO'] },
-                { word: 'DAUN', syllables: ['DA', 'UN'], emoji: '🍃', options: ['DA', 'UN', 'DU', 'AN', 'IN'] },
-                { word: 'IKAN', syllables: ['I', 'KAN'], emoji: '🐟', options: ['I', 'KAN', 'A', 'KIN', 'KUN'] },
-                { word: 'CUMI', syllables: ['CU', 'MI'], emoji: '🦑', options: ['CU', 'MI', 'CA', 'MU', 'MO'] },
-                { word: 'OBAT', syllables: ['O', 'BAT'], emoji: '💊', options: ['O', 'BAT', 'A', 'BIT', 'BUT'] },
-                { word: 'NUSA', syllables: ['NU', 'SA'], emoji: '🏝️', options: ['NU', 'SA', 'NA', 'SI', 'SO'] },
-                { word: 'LARI', syllables: ['LA', 'RI'], emoji: '🏃', options: ['LA', 'RI', 'LU', 'RA', 'RO'] },
-                { word: 'YOYO', syllables: ['YO', 'YO'], emoji: '🪀', options: ['YO', 'YA', 'YU', 'YE', 'YI'] }
+                { word: 'IKAN', syllables: ['I', 'KAN'], emoji: '🐟', options: ['I', 'KAN', 'A', 'KIN', 'KUN'] }
             ],
             2: [
                 { word: 'SEPEDA', syllables: ['SE', 'PE', 'DA'], emoji: '🚲', options: ['SE', 'PE', 'DA', 'PI', 'SU', 'SA'] },
                 { word: 'KELINCI', syllables: ['KE', 'LIN', 'CI'], emoji: '🐰', options: ['KE', 'LIN', 'CI', 'LAN', 'CU', 'KA'] },
                 { word: 'SEPATU', syllables: ['SE', 'PA', 'TU'], emoji: '👟', options: ['SE', 'PA', 'TU', 'SA', 'TI', 'PU'] },
-                { word: 'DOMPET', syllables: ['DOM', 'PET'], emoji: '👛', options: ['DOM', 'PET', 'DAM', 'POT', 'DUM'] },
                 { word: 'CELANA', syllables: ['CE', 'LA', 'NA'], emoji: '👖', options: ['CE', 'LA', 'NA', 'CI', 'LU', 'NI'] },
-                { word: 'KEMEJA', syllables: ['KE', 'ME', 'JA'], emoji: '👔', options: ['KE', 'ME', 'JA', 'KA', 'MU', 'JI'] },
                 { word: 'LEMARI', syllables: ['LE', 'MA', 'RI'], emoji: '🗄️', options: ['LE', 'MA', 'RI', 'LA', 'MU', 'RO'] },
-                { word: 'JENDELA', syllables: ['JEN', 'DE', 'LA'], emoji: '🪟', options: ['JEN', 'DE', 'LA', 'JAN', 'DU', 'LI'] },
-                { word: 'MELON', syllables: ['ME', 'LON'], emoji: '🍈', options: ['ME', 'LON', 'MA', 'LAN', 'LUN'] },
-                { word: 'KERETA', syllables: ['KE', 'RE', 'TA'], emoji: '🚆', options: ['KE', 'RE', 'TA', 'KA', 'RU', 'TI'] },
-                { word: 'CANGKIR', syllables: ['CANG', 'KIR'], emoji: '☕️', options: ['CANG', 'KIR', 'CING', 'KUR', 'CAR'] },
-                { word: 'SENDOK', syllables: ['SEN', 'DOK'], emoji: '🥄', options: ['SEN', 'DOK', 'SAN', 'DUK', 'SON'] },
-                { word: 'PIRING', syllables: ['PI', 'RING'], emoji: '🍽️', options: ['PI', 'RING', 'PA', 'RANG', 'RUNG'] },
                 { word: 'PENSIL', syllables: ['PEN', 'SIL'], emoji: '✏️', options: ['PEN', 'SIL', 'PAN', 'SUL', 'PON'] },
                 { word: 'JAGUNG', syllables: ['JA', 'GUNG'], emoji: '🌽', options: ['JA', 'GUNG', 'JI', 'GANG', 'GING'] },
-                { word: 'BAWANG', syllables: ['BA', 'WANG'], emoji: '🧅', options: ['BA', 'WANG', 'BU', 'WING', 'WUNG'] },
-                { word: 'BAYAM', syllables: ['BA', 'YAM'], emoji: '🥬', options: ['BA', 'YAM', 'BU', 'YIM', 'YUM'] },
-                { word: 'WORTEL', syllables: ['WOR', 'TEL'], emoji: '🥕', options: ['WOR', 'TEL', 'WAR', 'TIL', 'TUL'] },
-                { word: 'TOMAT', syllables: ['TO', 'MAT'], emoji: '🍅', options: ['TO', 'MAT', 'TA', 'MIT', 'MUT'] },
-                { word: 'PEPAYA', syllables: ['PE', 'PA', 'YA'], emoji: '🥭', options: ['PE', 'PA', 'YA', 'PU', 'PI', 'YO'] },
-                { word: 'NANAS', syllables: ['NA', 'NAS'], emoji: '🍍', options: ['NA', 'NAS', 'NI', 'NIS', 'NUS'] },
-                { word: 'DURIAN', syllables: ['DU', 'RI', 'AN'], emoji: '🫒', options: ['DU', 'RI', 'AN', 'DA', 'RU', 'IN'] },
-                { word: 'KANCIL', syllables: ['KAN', 'CIL'], emoji: '🦌', options: ['KAN', 'CIL', 'KIN', 'CUL', 'CAN'] },
-                { word: 'BURUNG', syllables: ['BU', 'RUNG'], emoji: '🐦', options: ['BU', 'RUNG', 'BA', 'RANG', 'RING'] },
-                { word: 'GAJAH', syllables: ['GA', 'JAH'], emoji: '🐘', options: ['GA', 'JAH', 'GI', 'JUH', 'JOH'] },
-                { word: 'JERUK', syllables: ['JE', 'RUK'], emoji: '🍊', options: ['JE', 'RUK', 'JA', 'RAK', 'RIK'] },
-                { word: 'SERAGAM', syllables: ['SE', 'RA', 'GAM'], emoji: '🥋', options: ['SE', 'RA', 'GAM', 'SI', 'RU', 'GUM'] },
-                { word: 'DINDING', syllables: ['DIN', 'DING'], emoji: '🧱', options: ['DIN', 'DING', 'DAN', 'DANG', 'DUNG'] },
-                { word: 'BANGKU', syllables: ['BANG', 'KU'], emoji: '🪑', options: ['BANG', 'KU', 'BING', 'KA', 'KO'] },
-                { word: 'KERTAS', syllables: ['KER', 'TAS'], emoji: '📄', options: ['KER', 'TAS', 'KAR', 'TIS', 'TUS'] },
-                { word: 'MONYET', syllables: ['MON', 'YET'], emoji: '🐒', options: ['MON', 'YET', 'MAN', 'YAT', 'YUT'] },
-                { word: 'BEBEK', syllables: ['BE', 'BEK'], emoji: '🦆', options: ['BE', 'BEK', 'BA', 'BAK', 'BUK'] },
-                { word: 'SEMUT', syllables: ['SE', 'MUT'], emoji: '🐜', options: ['SE', 'MUT', 'SA', 'MAT', 'MIT'] },
-                { word: 'LEBAH', syllables: ['LE', 'BAH'], emoji: '🐝', options: ['LE', 'BAH', 'LA', 'BUH', 'BIH'] }
+                { word: 'GAJAH', syllables: ['GA', 'JAH'], emoji: '🐘', options: ['GA', 'JAH', 'GI', 'JUH', 'JOH'] }
             ],
             3: [
                 { word: 'ASTRONOT', syllables: ['AS', 'TRO', 'NOT'], emoji: '👨‍🚀', options: ['AS', 'TRO', 'NOT', 'TRA', 'NAT', 'NUT'] },
-                { word: 'HELIKOPTER', syllables: ['HE', 'LI', 'KOP', 'TER'], emoji: '🚁', options: ['HE', 'LI', 'KOP', 'TER', 'KAP', 'TUR'] },
                 { word: 'PELANGI', syllables: ['PE', 'LANG', 'I'], emoji: '🌈', options: ['PE', 'LANG', 'I', 'LUNG', 'A', 'U'] },
                 { word: 'KOMPUTER', syllables: ['KOM', 'PU', 'TER'], emoji: '💻', options: ['KOM', 'PU', 'TER', 'KAM', 'PA', 'TAR'] },
-                { word: 'MATAHARI', syllables: ['MA', 'TA', 'HA', 'RI'], emoji: '☀️', options: ['MA', 'TA', 'HA', 'RI', 'MU', 'RO'] },
-                { word: 'PERISTIWA', syllables: ['PE', 'RIS', 'TI', 'WA'], emoji: '📸', options: ['PE', 'RIS', 'TI', 'WA', 'PA', 'WO'] },
-                { word: 'KELUARGA', syllables: ['KE', 'LU', 'AR', 'GA'], emoji: '👨‍👩‍👧‍👦', options: ['KE', 'LU', 'AR', 'GA', 'KA', 'GI'] },
-                { word: 'PANCASILA', syllables: ['PAN', 'CA', 'SI', 'LA'], emoji: '🇮🇩', options: ['PAN', 'CA', 'SI', 'LA', 'PIN', 'LU'] },
-                { word: 'INDONESIA', syllables: ['IN', 'DO', 'NE', 'SIA'], emoji: '🗺️', options: ['IN', 'DO', 'NE', 'SIA', 'AN', 'SA'] },
                 { word: 'BENDERA', syllables: ['BEN', 'DE', 'RA'], emoji: '🚩', options: ['BEN', 'DE', 'RA', 'BAN', 'DU', 'RO'] },
-                { word: 'PENDIDIKAN', syllables: ['PEN', 'DI', 'DI', 'KAN'], emoji: '🎓', options: ['PEN', 'DI', 'DI', 'KAN', 'PAN', 'KON'] },
-                { word: 'PEMANDANGAN', syllables: ['PE', 'MAN', 'DA', 'NGAN'], emoji: '🏞️', options: ['PE', 'MAN', 'DA', 'NGAN', 'PA', 'NGIN'] },
-                { word: 'PERPUSTAKAAN', syllables: ['PER', 'PUS', 'TA', 'KA', 'AN'], emoji: '🏛️', options: ['PER', 'PUS', 'TA', 'KA', 'AN', 'PAR'] },
-                { word: 'TENTARA', syllables: ['TEN', 'TA', 'RA'], emoji: '🪖', options: ['TEN', 'TA', 'RA', 'TAN', 'TU', 'RO'] },
-                { word: 'POLISI', syllables: ['PO', 'LI', 'SI'], emoji: '👮‍♂️', options: ['PO', 'LI', 'SI', 'PA', 'LU', 'SA'] },
-                { word: 'DOKTER', syllables: ['DOK', 'TER'], emoji: '👨‍⚕️', options: ['DOK', 'TER', 'DAK', 'TUR', 'DIR'] },
-                { word: 'SERANGGA', syllables: ['SE', 'RANG', 'GA'], emoji: '🐞', options: ['SE', 'RANG', 'GA', 'SA', 'RING', 'GU'] },
-                { word: 'KUPUKUPU', syllables: ['KU', 'PU', 'KU', 'PU'], emoji: '🦋', options: ['KU', 'PU', 'KA', 'PA', 'KO'] },
-                { word: 'PERAHU', syllables: ['PE', 'RA', 'HU'], emoji: '⛵️', options: ['PE', 'RA', 'HU', 'PA', 'RU', 'HI'] },
-                { word: 'LINGKUNGAN', syllables: ['LING', 'KUNG', 'AN'], emoji: '🌱', options: ['LING', 'KUNG', 'AN', 'LANG', 'KANG', 'IN'] },
-                { word: 'KETERAMPILAN', syllables: ['KE', 'TE', 'RAM', 'PI', 'LAN'], emoji: '🎨', options: ['KE', 'TE', 'RAM', 'PI', 'LAN', 'KA'] },
-                { word: 'MATEMATIKA', syllables: ['MA', 'TE', 'MA', 'TI', 'KA'], emoji: '📐', options: ['MA', 'TE', 'MA', 'TI', 'KA', 'MU'] },
-                { word: 'OLAH RAGA', syllables: ['O', 'LAH', 'RA', 'GA'], emoji: '⚽️', options: ['O', 'LAH', 'RA', 'GA', 'AL', 'GI'] },
-                { word: 'KESEHATAN', syllables: ['KE', 'SE', 'HA', 'TAN'], emoji: '🏥', options: ['KE', 'SE', 'HA', 'TAN', 'KA', 'TIN'] },
-                { word: 'MATAHARI', syllables: ['MA', 'TA', 'HA', 'RI'], emoji: '🌅', options: ['MA', 'TA', 'HA', 'RI', 'MI', 'RU'] },
-                { word: 'DISIPLIN', syllables: ['DI', 'SIP', 'LIN'], emoji: '⏰', options: ['DI', 'SIP', 'LIN', 'DA', 'SAP', 'LAN'] },
-                { word: 'PRAMUKA', syllables: ['PRA', 'MU', 'KA'], emoji: '🏕️', options: ['PRA', 'MU', 'KA', 'PRI', 'MA', 'KO'] }
+                { word: 'PERAHU', syllables: ['PE', 'RA', 'HU'], emoji: '⛵️', options: ['PE', 'RA', 'HU', 'PA', 'RU', 'HI'] }
             ]
         };
 
-        let userBuiltSyllables = [];
+        const sentenceDatabase = {
+            1: [
+                { sentence: 'Saya suka makan roti', words: ['Saya', 'suka', 'makan', 'roti'], emoji: '🍞' },
+                { sentence: 'Ibu memasak nasi', words: ['Ibu', 'memasak', 'nasi'], emoji: '🍳' },
+                { sentence: 'Adik minum susu', words: ['Adik', 'minum', 'susu'], emoji: '🥛' },
+                { sentence: 'Budi membaca buku', words: ['Budi', 'membaca', 'buku'], emoji: '📚' },
+                { sentence: 'Kucing tidur di kasur', words: ['Kucing', 'tidur', 'di', 'kasur'], emoji: '🐱' },
+                { sentence: 'Roni bermain bola', words: ['Roni', 'bermain', 'bola'], emoji: '⚽️' }
+            ],
+            2: [
+                { sentence: 'Siswa belajar di kelas', words: ['Siswa', 'belajar', 'di', 'kelas'], emoji: '🏫' },
+                { sentence: 'Kami bermain di lapangan', words: ['Kami', 'bermain', 'di', 'lapangan'], emoji: '🛝' },
+                { sentence: 'Ibu membeli buah pisang', words: ['Ibu', 'membeli', 'buah', 'pisang'], emoji: '🍌' },
+                { sentence: 'Burung terbang tinggi di udara', words: ['Burung', 'terbang', 'tinggi', 'di', 'udara'], emoji: '🐦' },
+                { sentence: 'Paman menanam bunga di taman', words: ['Paman', 'menanam', 'bunga', 'di', 'taman'], emoji: '🌸' }
+            ],
+            3: [
+                { sentence: 'Siswa SD Kalisari rajin belajar', words: ['Siswa', 'SD', 'Kalisari', 'rajin', 'belajar'], emoji: '🎓' },
+                { sentence: 'Matahari terbit di sebelah timur', words: ['Matahari', 'terbit', 'di', 'sebelah', 'timur'], emoji: '🌅' },
+                { sentence: 'Perpustakaan sekolah memiliki banyak buku', words: ['Perpustakaan', 'sekolah', 'memiliki', 'banyak', 'buku'], emoji: '📖' },
+                { sentence: 'Kita harus menjaga kebersihan lingkungan', words: ['Kita', 'harus', 'menjaga', 'kebersihan', 'lingkungan'], emoji: '🌱' }
+            ]
+        };
 
-        function startReadingGame() {
+        let userBuiltItems = [];
+
+        function startReadingGame(mode) {
             currentGameType = 'reading';
+            currentReadingMode = mode || 'syllable';
             currentQuestionIndex = 0;
             correctAnswersCount = 0;
             
             document.getElementById('reading-grade-badge').innerText = `Kelas ${currentGrade}`;
+            document.getElementById('reading-mode-title').innerText = currentReadingMode === 'syllable' ? 'Susun Suku Kata' : 'Susun Kalimat';
             
-            // Pilih 5 kata secara acak dari bank data
-            const masterList = readingDatabase[currentGrade] || readingDatabase[1];
-            currentQuestionsList = [...masterList].sort(() => Math.random() - 0.5).slice(0, 5);
+            if (currentReadingMode === 'syllable') {
+                const masterList = readingDatabase[currentGrade] || readingDatabase[1];
+                currentQuestionsList = [...masterList].sort(() => Math.random() - 0.5).slice(0, 5);
+            } else {
+                const masterList = sentenceDatabase[currentGrade] || sentenceDatabase[1];
+                currentQuestionsList = [...masterList].sort(() => Math.random() - 0.5).slice(0, 5);
+            }
 
             showScreen('screen-reading-game');
             renderReadingQuestion();
@@ -894,76 +1032,123 @@
         function renderReadingQuestion() {
             const q = currentQuestionsList[currentQuestionIndex];
             currentTargetWord = q;
-            userBuiltSyllables = [];
+            userBuiltItems = [];
 
-            document.getElementById('reading-image-emoji').innerText = q.emoji;
+            document.getElementById('reading-image-emoji').innerText = q.emoji || '📖';
             document.getElementById('reading-feedback').classList.add('hidden');
 
             const displayArea = document.getElementById('reading-word-display');
             displayArea.innerHTML = '';
-            q.syllables.forEach((syl, idx) => {
-                const slot = document.createElement('div');
-                slot.id = `syl-slot-${idx}`;
-                slot.className = 'w-20 h-16 bg-slate-100 border-4 border-dashed border-cyan-400 rounded-2xl flex items-center justify-center font-extrabold text-2xl text-indigo-900 shadow-inner';
-                slot.innerText = '?';
-                displayArea.appendChild(slot);
-            });
 
             const choicesArea = document.getElementById('reading-choices-grid');
             choicesArea.innerHTML = '';
-            
-            let choices = [...q.options].sort(() => Math.random() - 0.5);
-            choices.forEach(syl => {
-                const btn = document.createElement('button');
-                btn.className = 'py-3 px-5 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-extrabold text-2xl rounded-2xl shadow-md border-b-4 border-blue-700 transition bounce-hover active-press';
-                btn.innerText = syl;
-                btn.onclick = () => selectSyllableChoice(syl, btn);
-                choicesArea.appendChild(btn);
-            });
 
-            speakText(`Bacalah dan susun kata ${q.word}`);
+            if (currentReadingMode === 'syllable') {
+                document.getElementById('reading-instruction').innerText = 'Susun Suku Kata yang Benar:';
+
+                q.syllables.forEach((syl, idx) => {
+                    const slot = document.createElement('div');
+                    slot.id = `item-slot-${idx}`;
+                    slot.className = 'w-16 h-14 sm:w-20 sm:h-16 bg-slate-100 border-4 border-dashed border-cyan-400 rounded-2xl flex items-center justify-center font-extrabold text-xl sm:text-2xl text-indigo-900 shadow-inner';
+                    slot.innerText = '?';
+                    displayArea.appendChild(slot);
+                });
+
+                let choices = [...q.options].sort(() => Math.random() - 0.5);
+                choices.forEach(item => {
+                    const btn = document.createElement('button');
+                    btn.className = 'py-3 px-4 sm:px-5 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-extrabold text-xl sm:text-2xl rounded-2xl shadow-md border-b-4 border-blue-700 transition bounce-hover active-press';
+                    btn.innerText = item;
+                    btn.onclick = () => selectReadingChoice(item, btn);
+                    choicesArea.appendChild(btn);
+                });
+
+                speakText(`Bacalah dan susun kata ${q.word}`);
+            } else {
+                // Mode Susun Kalimat
+                document.getElementById('reading-instruction').innerText = 'Susun Kata-Kata Menjadi Kalimat yang Tepat:';
+
+                q.words.forEach((w, idx) => {
+                    const slot = document.createElement('div');
+                    slot.id = `item-slot-${idx}`;
+                    slot.className = 'px-3 py-2 min-w-[70px] h-12 bg-slate-100 border-2 border-dashed border-indigo-400 rounded-xl flex items-center justify-center font-bold text-sm sm:text-base text-indigo-900 shadow-inner';
+                    slot.innerText = '___';
+                    displayArea.appendChild(slot);
+                });
+
+                let shuffledWords = [...q.words].sort(() => Math.random() - 0.5);
+                shuffledWords.forEach(word => {
+                    const btn = document.createElement('button');
+                    btn.className = 'py-2 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:brightness-110 text-white font-bold text-base sm:text-lg rounded-xl shadow border-b-4 border-indigo-800 transition bounce-hover active-press';
+                    btn.innerText = word;
+                    btn.onclick = () => selectReadingChoice(word, btn);
+                    choicesArea.appendChild(btn);
+                });
+
+                speakText(`Susun kalimat: ${q.sentence}`);
+            }
         }
 
         function speakCurrentWord() {
             if (currentTargetWord) {
-                speakText(currentTargetWord.word);
+                if (currentReadingMode === 'syllable') speakText(currentTargetWord.word);
+                else speakText(currentTargetWord.sentence);
             }
         }
 
-        function selectSyllableChoice(syl, btnElement) {
+        function selectReadingChoice(item, btnElement) {
             playSound('pop');
-            speakText(syl);
+            speakText(item);
 
-            const targetSyllables = currentTargetWord.syllables;
-            if (userBuiltSyllables.length < targetSyllables.length) {
-                userBuiltSyllables.push(syl);
-                const currentSlotIdx = userBuiltSyllables.length - 1;
-                const slot = document.getElementById(`syl-slot-${currentSlotIdx}`);
-                slot.innerText = syl;
-                slot.className = 'w-20 h-16 bg-cyan-500 text-white border-4 border-cyan-600 rounded-2xl flex items-center justify-center font-extrabold text-2xl shadow-lg animate-bounce';
+            const targetArray = currentReadingMode === 'syllable' ? currentTargetWord.syllables : currentTargetWord.words;
 
-                if (userBuiltSyllables.length === targetSyllables.length) {
+            if (userBuiltItems.length < targetArray.length) {
+                userBuiltItems.push(item);
+                const currentSlotIdx = userBuiltItems.length - 1;
+                const slot = document.getElementById(`item-slot-${currentSlotIdx}`);
+                slot.innerText = item;
+                
+                if (currentReadingMode === 'syllable') {
+                    slot.className = 'w-16 h-14 sm:w-20 sm:h-16 bg-cyan-500 text-white border-4 border-cyan-600 rounded-2xl flex items-center justify-center font-extrabold text-xl sm:text-2xl shadow-lg animate-bounce';
+                } else {
+                    slot.className = 'px-3 py-2 min-w-[70px] h-12 bg-indigo-600 text-white border-2 border-indigo-700 rounded-xl flex items-center justify-center font-bold text-sm sm:text-base shadow animate-bounce';
+                }
+
+                btnElement.disabled = true;
+                btnElement.classList.add('opacity-40', 'cursor-not-allowed');
+
+                if (userBuiltItems.length === targetArray.length) {
                     checkReadingAnswer();
                 }
             }
         }
 
         function checkReadingAnswer() {
-            const isCorrect = userBuiltSyllables.join('') === currentTargetWord.syllables.join('');
             const feedback = document.getElementById('reading-feedback');
             feedback.classList.remove('hidden');
+
+            let isCorrect = false;
+            let targetText = '';
+
+            if (currentReadingMode === 'syllable') {
+                targetText = currentTargetWord.word;
+                isCorrect = userBuiltItems.join('') === currentTargetWord.syllables.join('');
+            } else {
+                targetText = currentTargetWord.sentence;
+                isCorrect = userBuiltItems.join(' ') === currentTargetWord.sentence;
+            }
 
             if (isCorrect) {
                 correctAnswersCount++;
                 playSound('correct');
                 feedback.className = 'p-4 rounded-2xl text-center font-bold text-lg bg-emerald-100 text-emerald-800 border-2 border-emerald-300';
-                feedback.innerText = `🎉 PINTAR! KATA '${currentTargetWord.word}' BENAR!`;
-                speakText(`Hebat! ${currentTargetWord.word}`);
+                feedback.innerText = `🎉 PINTAR! JAWABAN '${targetText}' BENAR!`;
+                speakText(`Hebat! ${targetText}`);
             } else {
                 playSound('wrong');
                 feedback.className = 'p-4 rounded-2xl text-center font-bold text-lg bg-rose-100 text-rose-800 border-2 border-rose-300';
-                feedback.innerText = `💡 KATA YANG BENAR ADALAH '${currentTargetWord.word}'`;
-                speakText(`Jawaban yang benar adalah ${currentTargetWord.word}`);
+                feedback.innerText = `💡 JAWABAN YANG BENAR ADALAH '${targetText}'`;
+                speakText(`Jawaban yang benar adalah ${targetText}`);
             }
 
             setTimeout(() => {
@@ -973,16 +1158,15 @@
                 } else {
                     finishGame();
                 }
-            }, 2000);
+            }, 2200);
         }
 
-        // --- GELEMBUNG (TANTANGAN DINAMIS BARU) ---
+        // --- GELEMBUNG ---
         function startBubbleGame() {
             currentGameType = 'bubble';
             bubbleScore = 0;
             bubbleTimeLeft = 20;
 
-            // Pilih Aturan Target Gelembung Acak Setiap Kali Bermain
             const rules = [
                 { text: 'Tangkap Angka GENAP!', check: (v) => v % 2 === 0 },
                 { text: 'Tangkap Angka GANJIL!', check: (v) => v % 2 !== 0 },
@@ -1087,15 +1271,15 @@
 
         function restartCurrentGame() {
             closeVictoryModal();
-            if (currentGameType === 'math') startMathGame();
-            else if (currentGameType === 'reading') startReadingGame();
+            if (currentGameType === 'math') startMathGame(currentMathOp);
+            else if (currentGameType === 'reading') startReadingGame(currentReadingMode);
             else if (currentGameType === 'bubble') startBubbleGame();
         }
 
         window.onload = function() {
             updateProfileUI();
             selectGrade(1);
-            loadIndonesianVoice();
+            loadIndonesianVoices();
         };
     </script>
 </body>
